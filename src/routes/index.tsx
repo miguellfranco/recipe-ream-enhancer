@@ -1,26 +1,303 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Check, Star, Shield, Sparkles, BookOpen, Heart, Infinity as InfinityIcon, MessageCircle, Printer, Trophy } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    meta: [
+      { title: "Guia de Autocura Energética — 150 Receitas Holísticas" },
+      { name: "description", content: "Guia prático com 150 receitas de cristais, chás e ervas para eliminar dores físicas e emocionais em minutos." },
+    ],
+  }),
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
+const HERO_IMG = "https://cocriadordeluz.com.br/wp-content/uploads/2024/11/Design_sem_nome__64_-removebg-preview-1-e1731866994315.png";
+const PRODUCT_FULL = "https://cocriadordeluz.com.br/wp-content/uploads/2026/04/guia-de-autocura-1.jpg";
+const SEAL = "https://cocriadordeluz.com.br/wp-content/uploads/2024/11/SELO-BLOCO-08-3.png";
+const BONUS_1 = "https://cocriadordeluz.com.br/wp-content/uploads/2024/11/Design_sem_nome__66_-removebg-preview-1-e1731803151818.png";
+const BONUS_2 = "https://cocriadordeluz.com.br/wp-content/uploads/2024/11/Design_sem_nome__65_-removebg-preview-1.png";
+const BONUS_3 = "https://cocriadordeluz.com.br/wp-content/uploads/2024/11/Design_sem_nome__63_-removebg-preview-1.png";
+
+const CHECKOUT = "https://pay.kiwify.com.br/pipvVXn";
+
+function CTA({ children = "QUERO TER CURA FÍSICA E EMOCIONAL", className = "" }) {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
+    <a
+      href={CHECKOUT}
+      className={`inline-flex items-center justify-center gap-2 rounded-full px-8 py-5 text-base md:text-lg font-bold tracking-wide text-[color:var(--cta-foreground)] shadow-[var(--shadow-soft)] transition-transform hover:scale-[1.02] active:scale-[0.99] ${className}`}
+      style={{ background: "var(--gradient-cta)" }}
     >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+      <Sparkles className="h-5 w-5" />
+      {children}
+    </a>
+  );
+}
+
+function SectionTitle({ children, kicker }: { children: React.ReactNode; kicker?: string }) {
+  return (
+    <div className="text-center max-w-3xl mx-auto mb-10">
+      {kicker && (
+        <div className="inline-block rounded-full bg-secondary px-4 py-1 text-xs font-semibold uppercase tracking-widest text-secondary-foreground mb-4">
+          {kicker}
+        </div>
+      )}
+      <h2 className="text-3xl md:text-4xl font-bold leading-tight text-foreground">{children}</h2>
     </div>
   );
 }
 
+const conditions = [
+  "Ansiedade generalizada e ataques de pânico",
+  "Depressão e sentimentos de desesperança",
+  "Burnout (esgotamento profissional)",
+  "Estresse crônico e procrastinação",
+  "Dores crônicas resistentes a tratamento",
+  "Insônia e distúrbios do sono",
+  "Bruxismo por tensão emocional",
+  "Pesadelos frequentes",
+  "Diabetes tipo 2 agravado por estresse",
+  "Infertilidade ligada a fatores emocionais",
+  "Dores de cabeça e enxaquecas",
+  "Dores lombares e nas costas",
+  "Dor cervical e tensão nos ombros",
+  "Fibromialgia",
+  "Dores articulares sem causa clara",
+  "Síndrome do intestino irritável",
+  "Gastrite e refluxo",
+  "Acne ligada ao estresse",
+  "Queda de cabelo por estresse",
+  "Transtornos alimentares",
+];
+
+const benefits = [
+  { icon: BookOpen, title: "+150 Tratamentos Práticos", text: "Mais de 150 receitas holísticas catalogadas para fazer em casa em poucos minutos por dia." },
+  { icon: MessageCircle, title: "Suporte ao aluno", text: "Apoio direto pelo WhatsApp para tirar todas as suas dúvidas sempre que precisar." },
+  { icon: Heart, title: "Sem conhecimento prévio", text: "Material simplificado e didático. É só ler e aplicar na prática." },
+  { icon: Printer, title: "Liberado para imprimir", text: "Acesso digital + versão pronta para impressão em qualquer gráfica, sem custo adicional." },
+  { icon: InfinityIcon, title: "Acesso vitalício", text: "Consulte sempre que quiser e compartilhe com quem você ama." },
+  { icon: Sparkles, title: "Ideal para terapeutas", text: "Compêndio respaldado pela medicina integrativa para uso profissional." },
+];
+
+const faqs = [
+  { q: "Esse guia realmente funciona para aliviar dores e problemas emocionais?", a: "Sim. O Guia foi desenvolvido com base em princípios da medicina integrativa. Estudos da Universidade de Harvard e do Journal of Ethnopharmacology comprovam os benefícios do uso de cristais, ervas e técnicas energéticas para reduzir inflamação, ansiedade, estresse e melhorar a saúde emocional." },
+  { q: "Nunca usei cristais ou ervas antes. Consigo aplicar?", a: "Com certeza. Tudo foi escrito em linguagem simples e didática, com passo a passo detalhado. Mesmo sem experiência você começa imediatamente — e nossa equipe está no WhatsApp para te ajudar." },
+  { q: "Não consigo essas informações de graça na internet?", a: "Algumas informações soltas existem online, mas o Guia reúne mais de 150 receitas catalogadas e validadas em um único material, com protocolos testados e respaldo da medicina integrativa." },
+  { q: "Esses métodos têm base científica?", a: "Sim. A OMS reconhece a integração corpo-mente, e pesquisas de Harvard mostram que terapias complementares reduzem marcadores de estresse. Não é misticismo — é abordagem holística com base científica." },
+  { q: "Tenho pouco tempo livre. Consigo aplicar mesmo assim?", a: "Sim. As receitas levam poucos minutos por dia e se encaixam na rotina. Você ainda recebe o Planner de Autocuidado para implementar com eficiência." },
+  { q: "Como funciona a garantia de 7 dias?", a: "Se nos primeiros 7 dias você não estiver satisfeito(a), basta chamar pelo WhatsApp e devolvemos 100% do valor. Sem perguntas, sem burocracia." },
+];
+
 function Index() {
-  return <PlaceholderIndex />;
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      {/* HERO */}
+      <section className="relative overflow-hidden" style={{ background: "var(--gradient-hero)" }}>
+        <div className="absolute inset-0 pointer-events-none opacity-40"
+          style={{ background: "radial-gradient(circle at 20% 20%, oklch(0.8 0.15 300 / 0.4), transparent 50%), radial-gradient(circle at 80% 60%, oklch(0.85 0.12 330 / 0.4), transparent 55%)" }} />
+        <div className="relative max-w-5xl mx-auto px-5 pt-14 pb-16 text-center">
+          <div className="inline-flex items-center gap-2 rounded-full bg-white/70 backdrop-blur px-4 py-1.5 text-xs font-semibold text-primary border border-primary/20 mb-6">
+            <Sparkles className="h-3.5 w-3.5" /> GUIA DE AUTOCURA ENERGÉTICA
+          </div>
+          <h1 className="text-3xl md:text-5xl font-extrabold leading-tight text-foreground">
+            Tenha em mãos seu <span className="underline decoration-primary decoration-4 underline-offset-4">Guia Prático de Autocura Energética</span>{" "}
+            <span className="text-destructive">para eliminar 80 tipos de dores e doenças psicossomáticas</span> em minutos
+          </h1>
+
+          <ul className="mt-8 flex flex-col sm:flex-row sm:justify-center gap-3 sm:gap-6 text-sm md:text-base font-semibold">
+            {["Sem remédios caros", "Sem terapias longas", "Sem perder tempo pesquisando"].map((t) => (
+              <li key={t} className="inline-flex items-center justify-center gap-2">
+                <span className="flex h-6 w-6 items-center justify-center rounded-md bg-[color:var(--cta)] text-white">
+                  <Check className="h-4 w-4" />
+                </span>
+                {t}
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-10 flex justify-center">
+            <img src={HERO_IMG} alt="Mockup do Guia de Autocura Energética em tablets e smartphones" className="w-full max-w-2xl drop-shadow-2xl" />
+          </div>
+
+          <div className="mt-8">
+            <CTA />
+          </div>
+        </div>
+      </section>
+
+      {/* SOCIAL PROOF */}
+      <section className="py-14 px-5">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 rounded-full bg-accent/15 px-4 py-2 text-sm font-bold text-foreground mb-4">
+            <Trophy className="h-4 w-4 text-accent" />
+            Nº 1 em vendas no nicho de terapias holísticas
+          </div>
+          <p className="text-lg md:text-xl text-muted-foreground">
+            <strong className="text-foreground">+34.150 alunos</strong> e <strong className="text-foreground">12.823 avaliações positivas</strong>
+          </p>
+          <div className="flex justify-center gap-1 mt-3 text-accent">
+            {[...Array(5)].map((_, i) => <Star key={i} className="h-6 w-6 fill-current" />)}
+          </div>
+          <h2 className="text-2xl md:text-3xl font-bold mt-8 leading-snug">
+            8.202 mães, pais, avós e estudantes brasileiros relataram <span className="text-primary">alívio físico e emocional</span> seguindo as práticas do Guia.
+          </h2>
+        </div>
+      </section>
+
+      {/* BÍBLIA */}
+      <section className="py-16 px-5 bg-secondary/40">
+        <div className="max-w-4xl mx-auto">
+          <SectionTitle kicker="Sua nova rotina">Este guia será sua BÍBLIA de Autocura Energética</SectionTitle>
+          <div className="space-y-5 text-base md:text-lg text-muted-foreground leading-relaxed">
+            <p>Quando uma pessoa não consegue lidar adequadamente com suas emoções, o corpo acaba <strong className="text-foreground">somatizando</strong> essas questões, resultando em doenças físicas.</p>
+            <p>A psicossomatização é uma forma do seu corpo expressar a necessidade de resolver conflitos emocionais. O <strong className="text-foreground">Guia de Autocura Energética</strong> entrega técnicas holísticas práticas para restaurar 100% do seu equilíbrio emocional — promovendo a cura de dentro para fora.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* SCIENCE */}
+      <section className="py-16 px-5">
+        <div className="max-w-5xl mx-auto">
+          <SectionTitle kicker="Base científica">
+            100% fundamentado em princípios reconhecidos pela medicina integrativa
+          </SectionTitle>
+          <div className="grid md:grid-cols-3 gap-5">
+            {[
+              { tag: "OMS", text: "Evidências científicas sobre a conexão mente-corpo reconhecidas pela Organização Mundial da Saúde." },
+              { tag: "Harvard", text: "Estudos mostram que técnicas integrativas reduzem marcadores de inflamação e melhoram a saúde emocional." },
+              { tag: "Journal of Ethnopharmacology", text: "Ervas como valeriana e lavanda têm efeitos comprovados contra insônia, ansiedade e dores crônicas." },
+            ].map((c) => (
+              <div key={c.tag} className="rounded-2xl bg-card border border-border p-6 shadow-sm hover:shadow-[var(--shadow-soft)] transition-shadow">
+                <div className="text-xs font-bold uppercase tracking-widest text-primary mb-3">{c.tag}</div>
+                <p className="text-sm md:text-base text-foreground leading-relaxed">{c.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CONDITIONS */}
+      <section className="py-16 px-5 bg-secondary/40">
+        <div className="max-w-5xl mx-auto">
+          <SectionTitle kicker="O que você vai tratar">
+            Mais de 150 receitas holísticas práticas para melhorar sintomas como:
+          </SectionTitle>
+          <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {conditions.map((c) => (
+              <li key={c} className="flex items-start gap-3 rounded-xl bg-card border border-border p-4">
+                <Check className="h-5 w-5 text-[color:var(--cta)] shrink-0 mt-0.5" />
+                <span className="text-sm md:text-base">{c}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="text-center mt-10"><CTA>EU QUERO MEU GUIA</CTA></div>
+        </div>
+      </section>
+
+      {/* BENEFITS */}
+      <section className="py-16 px-5">
+        <div className="max-w-5xl mx-auto">
+          <SectionTitle kicker="Por que é diferente">Tudo o que você recebe</SectionTitle>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {benefits.map(({ icon: Icon, title, text }) => (
+              <div key={title} className="rounded-2xl border border-border bg-card p-6 hover:-translate-y-1 transition-transform">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary mb-4">
+                  <Icon className="h-5 w-5" />
+                </div>
+                <h3 className="font-bold text-lg mb-2">{title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PREVIEW */}
+      <section className="py-16 px-5 bg-foreground text-background">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">Veja uma prévia do conteúdo do Guia</h2>
+          <img src={PRODUCT_FULL} alt="Páginas internas do Guia de Autocura Energética" className="rounded-2xl shadow-2xl mx-auto w-full max-w-2xl" />
+        </div>
+      </section>
+
+      {/* BONUSES */}
+      <section className="py-16 px-5">
+        <div className="max-w-5xl mx-auto">
+          <SectionTitle kicker="Exclusivo de hoje">
+            Ao adquirir hoje, você recebe 3 bônus exclusivos
+          </SectionTitle>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { tag: "🎁 Presente 1", img: BONUS_1, title: "Planner de Autocuidado", text: "Calendário semanal para implementar suas práticas e acompanhar seu progresso." },
+              { tag: "🎁 Presente 2", img: BONUS_2, title: "Calendário Lunar de Rituais", text: "Calendário digital com todas as fases lunares e melhores dias para cada ritual." },
+              { tag: "🎁 Super Bônus", img: BONUS_3, title: "Leitura Numerológica Cabalística", text: "Análise personalizada baseada no seu nome completo e data de nascimento — entregue em até 24h." },
+            ].map((b) => (
+              <div key={b.title} className="rounded-2xl border border-primary/20 bg-card p-6 text-center shadow-sm hover:shadow-[var(--shadow-soft)] transition-shadow">
+                <div className="inline-block rounded-full bg-accent/15 px-3 py-1 text-xs font-bold text-accent-foreground/80 mb-4">{b.tag}</div>
+                <img src={b.img} alt={b.title} className="h-44 mx-auto object-contain mb-4" />
+                <h3 className="font-bold text-lg mb-2">{b.title}</h3>
+                <p className="text-sm text-muted-foreground">{b.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* OFFER */}
+      <section id="comprar" className="py-20 px-5 bg-secondary/40">
+        <div className="max-w-2xl mx-auto rounded-3xl bg-card border border-primary/20 shadow-[var(--shadow-soft)] p-8 md:p-12 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold mb-6">Sua Bíblia de Autocura Energética</h2>
+          <img src={HERO_IMG} alt="Guia completo + bônus" className="w-full max-w-sm mx-auto mb-6" />
+          <ul className="text-left space-y-2 mb-8 text-sm md:text-base">
+            {[
+              "+150 receitas catalogadas com cristais, chás e ervas",
+              "Planner de Autocuidado Semanal (Bônus)",
+              "Calendário Lunar para Rituais (Bônus)",
+              "Leitura Numerológica Cabalística (Super Bônus)",
+              "Formato 100% digital em PDF, pronto para impressão",
+              "Acesso vitalício e atualizações gratuitas",
+              "Suporte individual no WhatsApp",
+            ].map((t) => (
+              <li key={t} className="flex gap-2"><Check className="h-5 w-5 text-[color:var(--cta)] shrink-0" />{t}</li>
+            ))}
+          </ul>
+          <p className="text-sm text-muted-foreground line-through">Valor total: R$ 497,00</p>
+          <p className="mt-2 text-base font-semibold">De oferta promocional por apenas:</p>
+          <div className="my-4">
+            <div className="text-5xl md:text-6xl font-extrabold text-primary leading-none">12x R$ 3,58</div>
+            <div className="mt-2 text-lg font-semibold">ou <span className="text-foreground">R$ 37</span> à vista</div>
+          </div>
+          <CTA>QUERO O TRATAMENTO COMPLETO</CTA>
+          <div className="mt-8 flex flex-col items-center gap-3">
+            <img src={SEAL} alt="Selo de garantia de 7 dias" className="h-24" />
+            <p className="text-sm text-muted-foreground max-w-md inline-flex items-start gap-2">
+              <Shield className="h-5 w-5 text-[color:var(--cta)] shrink-0 mt-0.5" />
+              <span><strong className="text-foreground">Garantia de 7 dias.</strong> Se não for para você, devolvemos 100% do investimento — sem perguntas.</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-16 px-5">
+        <div className="max-w-3xl mx-auto">
+          <SectionTitle kicker="FAQ">Perguntas frequentes</SectionTitle>
+          <div className="space-y-3">
+            {faqs.map((f, i) => (
+              <details key={i} className="group rounded-xl border border-border bg-card p-5 open:shadow-[var(--shadow-soft)] transition-shadow">
+                <summary className="cursor-pointer list-none flex items-start justify-between gap-3 font-semibold">
+                  <span>{f.q}</span>
+                  <span className="text-primary text-2xl leading-none transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p className="mt-3 text-sm md:text-base text-muted-foreground leading-relaxed">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <footer className="py-10 px-5 border-t border-border text-center text-xs text-muted-foreground">
+        © {new Date().getFullYear()} Guia de Autocura Energética. Todos os direitos reservados.
+      </footer>
+    </div>
+  );
 }
