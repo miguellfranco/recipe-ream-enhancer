@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Check, Star, Shield, Sparkles, BookOpen, Heart, Infinity as InfinityIcon, MessageCircle, Printer, Trophy } from "lucide-react";
+import { useState } from "react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import produtoMockup from "@/assets/produto-mockup.png";
 
 export const Route = createFileRoute("/")({
@@ -21,6 +23,7 @@ const BONUS_3 = "https://cocriadordeluz.com.br/wp-content/uploads/2024/11/Design
 
 const CHECKOUT = "https://pay.kiwify.com.br/pipvVXn";
 const CHECKOUT_BASIC = "https://pay.kiwify.com.br/pipvVXn";
+const CHECKOUT_UPSELL = CHECKOUT;
 
 function CTA({ children = "QUERO TER CURA FÍSICA E EMOCIONAL", className = "" }) {
   return (
@@ -90,6 +93,8 @@ const faqs = [
 ];
 
 function Index() {
+  const [upsellOpen, setUpsellOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* HERO */}
@@ -277,12 +282,13 @@ function Index() {
               <div className="mt-auto">
                 <div className="text-4xl font-extrabold text-foreground leading-none">R$ 10,00</div>
                 <p className="mt-1 text-xs text-muted-foreground">à vista — somente o livro</p>
-                <a
-                  href={CHECKOUT_BASIC}
-                  className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-4 text-sm font-bold border-2 border-border bg-background text-foreground hover:bg-muted transition-colors"
+                <button
+                  type="button"
+                  onClick={() => setUpsellOpen(true)}
+                  className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-4 text-sm font-bold border-2 border-border bg-background text-foreground hover:bg-muted transition-colors cursor-pointer"
                 >
                   QUERO SÓ O LIVRO
-                </a>
+                </button>
               </div>
             </div>
 
@@ -363,6 +369,65 @@ function Index() {
       <footer className="py-10 px-5 border-t border-border text-center text-xs text-muted-foreground">
         © {new Date().getFullYear()} Guia de Autocura Energética. Todos os direitos reservados.
       </footer>
+
+      {/* UPSELL MODAL */}
+      <Dialog open={upsellOpen} onOpenChange={setUpsellOpen}>
+        <DialogContent className="max-w-md p-0 overflow-hidden rounded-3xl bg-white border-0 max-h-[92vh] overflow-y-auto">
+          <div className="px-6 pt-8 pb-7 text-center">
+            <div className="text-5xl mb-4">🎁</div>
+            <h3 className="text-2xl md:text-3xl font-extrabold text-[#0f172a] leading-tight">
+              Espere! Oferta<br />Exclusiva!
+            </h3>
+            <p className="mt-4 text-[11px] md:text-xs font-extrabold uppercase tracking-[0.18em] text-[color:var(--cta)]">
+              Upgrade para o pacote completo com desconto extra
+            </p>
+
+            <div className="mt-6 rounded-2xl bg-[#fff7e6] px-5 py-6">
+              <p className="text-sm text-muted-foreground">De <span className="line-through">R$ 37,00</span></p>
+              <p className="mt-2 text-3xl md:text-4xl font-extrabold text-[#15803d] leading-tight">
+                Por apenas<br />R$ 24,99
+              </p>
+              <div className="mt-5 inline-flex items-center justify-center rounded-full px-6 py-3 text-xs md:text-sm font-extrabold text-white shadow-md" style={{ background: "var(--gradient-cta)" }}>
+                ECONOMIZE R$ 12 AGORA!
+              </div>
+            </div>
+
+            <ul className="mt-6 space-y-3 text-left">
+              {[
+                "+150 Receitas Holísticas Completas",
+                "Planner de Autocuidado Semanal",
+                "Calendário Lunar de Rituais",
+                "Leitura Numerológica Cabalística personalizada",
+                "Suporte individual no WhatsApp",
+              ].map((t) => (
+                <li key={t} className="flex items-start gap-3 text-sm md:text-base text-[#0f172a] font-medium">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#dcfce7] text-[#15803d] shrink-0 mt-0.5">
+                    <Check className="h-4 w-4" strokeWidth={3} />
+                  </span>
+                  <span>{t}</span>
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href={CHECKOUT_UPSELL}
+              className="mt-7 flex w-full items-center justify-between gap-2 rounded-2xl px-6 py-5 text-sm md:text-base font-extrabold uppercase text-white shadow-lg hover:scale-[1.01] active:scale-[0.99] transition-transform"
+              style={{ background: "var(--gradient-cta)" }}
+            >
+              <span className="flex-1 text-center">Quero o pacote completo com desconto</span>
+              <span className="text-lg">→</span>
+            </a>
+
+            <button
+              type="button"
+              onClick={() => { setUpsellOpen(false); window.location.href = CHECKOUT_BASIC; }}
+              className="mt-4 text-xs md:text-sm font-semibold text-muted-foreground underline underline-offset-4 hover:text-foreground transition-colors cursor-pointer"
+            >
+              Não, quero apenas o livro
+            </button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
