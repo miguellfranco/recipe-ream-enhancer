@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Check, Star, Shield, Sparkles, BookOpen, Heart, Infinity as InfinityIcon, MessageCircle, Printer, Trophy } from "lucide-react";
+import produtoMockup from "@/assets/produto-mockup.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -11,14 +12,15 @@ export const Route = createFileRoute("/")({
   }),
 });
 
-const HERO_IMG = "https://cocriadordeluz.com.br/wp-content/uploads/2024/11/Design_sem_nome__64_-removebg-preview-1-e1731866994315.png";
-const PRODUCT_FULL = "https://cocriadordeluz.com.br/wp-content/uploads/2026/04/guia-de-autocura-1.jpg";
+const HERO_IMG = produtoMockup;
+const PRODUCT_FULL = produtoMockup;
 const SEAL = "https://cocriadordeluz.com.br/wp-content/uploads/2024/11/SELO-BLOCO-08-3.png";
 const BONUS_1 = "https://cocriadordeluz.com.br/wp-content/uploads/2024/11/Design_sem_nome__66_-removebg-preview-1-e1731803151818.png";
 const BONUS_2 = "https://cocriadordeluz.com.br/wp-content/uploads/2024/11/Design_sem_nome__65_-removebg-preview-1.png";
 const BONUS_3 = "https://cocriadordeluz.com.br/wp-content/uploads/2024/11/Design_sem_nome__63_-removebg-preview-1.png";
 
 const CHECKOUT = "https://pay.kiwify.com.br/pipvVXn";
+const CHECKOUT_BASIC = "https://pay.kiwify.com.br/pipvVXn";
 
 function CTA({ children = "QUERO TER CURA FÍSICA E EMOCIONAL", className = "" }) {
   return (
@@ -244,34 +246,97 @@ function Index() {
 
       {/* OFFER */}
       <section id="comprar" className="py-20 px-5 bg-secondary/40">
-        <div className="max-w-2xl mx-auto rounded-3xl bg-card border border-primary/20 shadow-[var(--shadow-soft)] p-8 md:p-12 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6">Sua Bíblia de Autocura Energética</h2>
-          <img src={HERO_IMG} alt="Guia completo + bônus" className="w-full max-w-sm mx-auto mb-6" />
-          <ul className="text-left space-y-2 mb-8 text-sm md:text-base">
-            {[
-              "+150 receitas catalogadas com cristais, chás e ervas",
-              "Planner de Autocuidado Semanal (Bônus)",
-              "Calendário Lunar para Rituais (Bônus)",
-              "Leitura Numerológica Cabalística (Super Bônus)",
-              "Formato 100% digital em PDF, pronto para impressão",
-              "Acesso vitalício e atualizações gratuitas",
-              "Suporte individual no WhatsApp",
-            ].map((t) => (
-              <li key={t} className="flex gap-2"><Check className="h-5 w-5 text-[color:var(--cta)] shrink-0" />{t}</li>
-            ))}
-          </ul>
-          <p className="text-sm text-muted-foreground line-through">Valor total: R$ 497,00</p>
-          <p className="mt-2 text-base font-semibold">De oferta promocional por apenas:</p>
-          <div className="my-4">
-            <div className="text-5xl md:text-6xl font-extrabold text-primary leading-none">12x R$ 3,58</div>
-            <div className="mt-2 text-lg font-semibold">ou <span className="text-foreground">R$ 37</span> à vista</div>
+        <div className="max-w-6xl mx-auto">
+          <SectionTitle kicker="Escolha seu plano">Duas formas de começar sua autocura hoje</SectionTitle>
+
+          <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-stretch">
+            {/* BASIC PLAN — só o livro */}
+            <div className="relative rounded-3xl bg-card border border-border shadow-sm p-8 flex flex-col opacity-95">
+              <div className="inline-block self-start rounded-full bg-muted px-3 py-1 text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">
+                Plano Simples
+              </div>
+              <h3 className="text-xl md:text-2xl font-bold mb-2">Apenas o Guia</h3>
+              <p className="text-sm text-muted-foreground mb-6">Somente o livro digital, sem bônus.</p>
+              <ul className="text-left space-y-2 mb-8 text-sm">
+                {[
+                  "+150 receitas holísticas em PDF",
+                  "Acesso digital imediato",
+                  "Liberado para impressão",
+                ].map((t) => (
+                  <li key={t} className="flex gap-2"><Check className="h-5 w-5 text-muted-foreground shrink-0" />{t}</li>
+                ))}
+                {[
+                  "Sem Planner de Autocuidado",
+                  "Sem Calendário Lunar",
+                  "Sem Leitura Numerológica",
+                  "Sem suporte no WhatsApp",
+                ].map((t) => (
+                  <li key={t} className="flex gap-2 text-muted-foreground/70 line-through"><span className="h-5 w-5 shrink-0 text-center">—</span>{t}</li>
+                ))}
+              </ul>
+              <div className="mt-auto">
+                <div className="text-4xl font-extrabold text-foreground leading-none">R$ 10,00</div>
+                <p className="mt-1 text-xs text-muted-foreground">à vista — somente o livro</p>
+                <a
+                  href={CHECKOUT_BASIC}
+                  className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-4 text-sm font-bold border-2 border-border bg-background text-foreground hover:bg-muted transition-colors"
+                >
+                  QUERO SÓ O LIVRO
+                </a>
+              </div>
+            </div>
+
+            {/* PREMIUM PLAN — destaque */}
+            <div className="relative rounded-3xl border-2 border-primary bg-card shadow-[var(--shadow-glow)] p-8 md:p-10 flex flex-col scale-100 lg:scale-[1.03] z-10">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                <span className="inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-white shadow-lg" style={{ background: "var(--gradient-cta)" }}>
+                  <Star className="h-3.5 w-3.5 fill-current" /> Mais escolhido — 92% dos alunos
+                </span>
+              </div>
+              <div className="inline-block self-start rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-primary mb-4 mt-2">
+                Pacote Completo
+              </div>
+              <h3 className="text-2xl md:text-3xl font-extrabold mb-2">Guia + TODOS os Bônus</h3>
+              <p className="text-sm text-muted-foreground mb-6">A experiência completa para transformar sua saúde física e emocional.</p>
+
+              <img src={HERO_IMG} alt="Guia completo + bônus" className="w-full max-w-xs mx-auto mb-6 drop-shadow-xl" />
+
+              <div className="rounded-2xl bg-secondary/50 border border-primary/15 p-5 mb-6">
+                <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">Tudo que você vai receber:</p>
+                <ul className="text-left space-y-2.5 text-sm md:text-base">
+                  {[
+                    "📘 Guia completo com +150 receitas holísticas",
+                    "🎁 Bônus 1 — Planner de Autocuidado Semanal",
+                    "🎁 Bônus 2 — Calendário Lunar de Rituais",
+                    "⭐ Super Bônus — Leitura Numerológica Cabalística personalizada",
+                    "🖨️ Versão pronta para impressão sem custo extra",
+                    "♾️ Acesso vitalício + atualizações gratuitas",
+                    "💬 Suporte individual no WhatsApp",
+                    "📲 Entrega 100% digital imediata",
+                  ].map((t) => (
+                    <li key={t} className="flex gap-2 items-start"><Check className="h-5 w-5 text-[color:var(--cta)] shrink-0 mt-0.5" /><span>{t}</span></li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="text-center mt-auto">
+                <p className="text-sm text-muted-foreground line-through">Valor total dos itens: R$ 497,00</p>
+                <p className="mt-2 text-base font-semibold">Hoje, oferta promocional por apenas:</p>
+                <div className="my-4">
+                  <div className="text-5xl md:text-6xl font-extrabold text-primary leading-none">12x R$ 3,58</div>
+                  <div className="mt-2 text-lg font-semibold">ou <span className="text-foreground font-extrabold">R$ 37</span> à vista</div>
+                </div>
+                <CTA>QUERO O PACOTE COMPLETO</CTA>
+                <p className="mt-3 text-xs font-semibold text-[color:var(--cta)]">⚡ Economize R$ 460 escolhendo o pacote completo</p>
+              </div>
+            </div>
           </div>
-          <CTA>QUERO O TRATAMENTO COMPLETO</CTA>
-          <div className="mt-8 flex flex-col items-center gap-3">
+
+          <div className="mt-12 flex flex-col items-center gap-3">
             <img src={SEAL} alt="Selo de garantia de 7 dias" className="h-24" />
-            <p className="text-sm text-muted-foreground max-w-md inline-flex items-start gap-2">
+            <p className="text-sm text-muted-foreground max-w-md text-center inline-flex items-start gap-2">
               <Shield className="h-5 w-5 text-[color:var(--cta)] shrink-0 mt-0.5" />
-              <span><strong className="text-foreground">Garantia de 7 dias.</strong> Se não for para você, devolvemos 100% do investimento — sem perguntas.</span>
+              <span><strong className="text-foreground">Garantia incondicional de 7 dias</strong> em qualquer plano. Se não for para você, devolvemos 100% do investimento — sem perguntas.</span>
             </p>
           </div>
         </div>
