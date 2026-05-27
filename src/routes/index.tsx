@@ -458,11 +458,13 @@ function Index() {
               </div>
 
               <div className="mt-5 rounded-2xl bg-white/10 border border-white/20 backdrop-blur p-4 text-left">
-                <p className="text-[11px] font-extrabold uppercase tracking-widest text-yellow-200 mb-3 text-center">+ 2 Bônus exclusivos dessa oferta</p>
+                <p className="text-[11px] font-extrabold uppercase tracking-widest text-yellow-200 mb-3 text-center">+ 4 Bônus exclusivos dessa oferta</p>
                 <ul className="space-y-2.5">
                   {[
                     { t: "Manual Secreto dos Óleos Essenciais", s: "50 sinergias para cura emocional, sono e ansiedade" },
                     { t: "Banhos Sagrados de Limpeza Energética", s: "30 rituais ancestrais de descarrego e proteção" },
+                    { t: "Desafio de 7 Dias de Limpeza Energética", s: "Método prático para restaurar sua energia e elevar sua vibração em minutos por dia" },
+                    { t: "Manual de Proteção Espiritual e Limpeza da Energia", s: "Técnicas simples e poderosas para proteger sua energia no dia a dia" },
                   ].map((b) => (
                     <li key={b.t} className="flex items-start gap-3">
                       <span className="flex h-7 w-7 items-center justify-center rounded-full bg-yellow-300 text-[#6b21a8] shrink-0 text-sm font-black">★</span>
