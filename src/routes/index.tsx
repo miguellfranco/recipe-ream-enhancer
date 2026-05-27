@@ -25,10 +25,10 @@ const CHECKOUT = "https://pay.kiwify.com.br/pipvVXn";
 const CHECKOUT_BASIC = "https://pay.kiwify.com.br/pipvVXn";
 const CHECKOUT_UPSELL = CHECKOUT;
 
-function CTA({ children = "QUERO TER CURA FÍSICA E EMOCIONAL", className = "" }) {
+function CTA({ children = "QUERO TER CURA FÍSICA E EMOCIONAL", className = "", href = "#comprar" }: { children?: React.ReactNode; className?: string; href?: string }) {
   return (
     <a
-      href={CHECKOUT}
+      href={href}
       className={`inline-flex items-center justify-center gap-2 rounded-full px-8 py-5 text-base md:text-lg font-bold tracking-wide text-[color:var(--cta-foreground)] shadow-[var(--shadow-soft)] transition-transform hover:scale-[1.02] active:scale-[0.99] ${className}`}
       style={{ background: "var(--gradient-cta)" }}
     >
@@ -94,6 +94,7 @@ const faqs = [
 
 function Index() {
   const [upsellOpen, setUpsellOpen] = useState(false);
+  const [upsellStage, setUpsellStage] = useState<"first" | "final">("first");
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -284,7 +285,7 @@ function Index() {
                 <p className="mt-1 text-xs text-muted-foreground">à vista — somente o livro</p>
                 <button
                   type="button"
-                  onClick={() => setUpsellOpen(true)}
+                  onClick={() => { setUpsellStage("first"); setUpsellOpen(true); }}
                   className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-4 text-sm font-bold border-2 border-border bg-background text-foreground hover:bg-muted transition-colors cursor-pointer"
                 >
                   QUERO SÓ O LIVRO
@@ -332,7 +333,7 @@ function Index() {
                   <div className="text-5xl md:text-6xl font-extrabold text-primary leading-none">12x R$ 3,58</div>
                   <div className="mt-2 text-lg font-semibold">ou <span className="text-foreground font-extrabold">R$ 37</span> à vista</div>
                 </div>
-                <CTA>QUERO O PACOTE COMPLETO</CTA>
+              <CTA href={CHECKOUT}>QUERO O PACOTE COMPLETO</CTA>
                 <p className="mt-3 text-xs font-semibold text-[color:var(--cta)]">⚡ Economize R$ 460 escolhendo o pacote completo</p>
               </div>
             </div>
@@ -373,6 +374,7 @@ function Index() {
       {/* UPSELL MODAL */}
       <Dialog open={upsellOpen} onOpenChange={setUpsellOpen}>
         <DialogContent className="max-w-md p-0 overflow-hidden rounded-3xl bg-white border-0 max-h-[92vh] overflow-y-auto">
+          {upsellStage === "first" ? (
           <div className="px-6 pt-8 pb-7 text-center">
             <div className="text-5xl mb-4">🎁</div>
             <h3 className="text-2xl md:text-3xl font-extrabold text-[#0f172a] leading-tight">
@@ -420,12 +422,93 @@ function Index() {
 
             <button
               type="button"
-              onClick={() => { setUpsellOpen(false); window.location.href = CHECKOUT_BASIC; }}
+              onClick={() => setUpsellStage("final")}
               className="mt-4 text-xs md:text-sm font-semibold text-muted-foreground underline underline-offset-4 hover:text-foreground transition-colors cursor-pointer"
             >
               Não, quero apenas o livro
             </button>
           </div>
+          ) : (
+          <div className="relative px-6 pt-8 pb-8 text-center overflow-hidden" style={{ background: "linear-gradient(160deg, oklch(0.32 0.14 300) 0%, oklch(0.42 0.18 295) 55%, oklch(0.55 0.20 320) 100%)" }}>
+            <div className="pointer-events-none absolute inset-0 opacity-40" style={{ background: "radial-gradient(circle at 20% 10%, oklch(0.8 0.18 320 / 0.5), transparent 50%), radial-gradient(circle at 80% 90%, oklch(0.75 0.18 280 / 0.55), transparent 55%)" }} />
+            <div className="relative">
+              <div className="inline-flex items-center gap-2 rounded-full bg-white/15 backdrop-blur px-3 py-1 text-[10px] font-extrabold uppercase tracking-[0.2em] text-white border border-white/25 mb-4">
+                <Sparkles className="h-3 w-3" /> Última chance — só agora
+              </div>
+              <h3 className="text-2xl md:text-3xl font-extrabold text-white leading-tight">
+                ESPERE!<br />
+                <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(90deg, #fde68a, #fbbf24, #fde68a)" }}>
+                  Oferta IRRECUSÁVEL
+                </span>
+              </h3>
+              <p className="mt-3 text-sm text-white/85">
+                Leve o <strong className="text-white">Pacote Completo</strong> + <strong className="text-white">2 bônus exclusivos</strong> que só aparecem aqui:
+              </p>
+
+              <div className="mt-5 rounded-2xl bg-white/95 px-5 py-6 shadow-2xl">
+                <p className="text-xs uppercase tracking-widest font-bold text-[#6b21a8]">Preço final exclusivo</p>
+                <p className="text-sm text-muted-foreground mt-1">De <span className="line-through">R$ 37,00</span> · antes <span className="line-through">R$ 24,99</span></p>
+                <p className="mt-2 text-5xl md:text-6xl font-black leading-none bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, #7e22ce, #a855f7, #c026d3)" }}>
+                  R$ 18,87
+                </p>
+                <p className="mt-2 text-xs font-bold text-[#6b21a8]">à vista — pagamento único</p>
+                <div className="mt-4 inline-flex items-center justify-center rounded-full px-5 py-2 text-xs font-extrabold text-white shadow-md animate-pulse" style={{ background: "linear-gradient(90deg, #7e22ce, #c026d3)" }}>
+                  ⚡ ECONOMIZE R$ 18,13 AGORA
+                </div>
+              </div>
+
+              <div className="mt-5 rounded-2xl bg-white/10 border border-white/20 backdrop-blur p-4 text-left">
+                <p className="text-[11px] font-extrabold uppercase tracking-widest text-yellow-200 mb-3 text-center">+ 2 Bônus exclusivos dessa oferta</p>
+                <ul className="space-y-2.5">
+                  {[
+                    { t: "Manual Secreto dos Óleos Essenciais", s: "50 sinergias para cura emocional, sono e ansiedade" },
+                    { t: "Banhos Sagrados de Limpeza Energética", s: "30 rituais ancestrais de descarrego e proteção" },
+                  ].map((b) => (
+                    <li key={b.t} className="flex items-start gap-3">
+                      <span className="flex h-7 w-7 items-center justify-center rounded-full bg-yellow-300 text-[#6b21a8] shrink-0 text-sm font-black">★</span>
+                      <div>
+                        <p className="text-sm font-bold text-white leading-tight">{b.t}</p>
+                        <p className="text-xs text-white/75 leading-snug">{b.s}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <ul className="mt-5 grid grid-cols-1 gap-2 text-left">
+                {[
+                  "+150 Receitas Holísticas Completas",
+                  "Planner de Autocuidado Semanal",
+                  "Calendário Lunar de Rituais",
+                  "Leitura Numerológica Cabalística personalizada",
+                  "Suporte individual no WhatsApp",
+                ].map((t) => (
+                  <li key={t} className="flex items-center gap-2 text-xs md:text-sm text-white/95 font-medium">
+                    <Check className="h-4 w-4 text-yellow-300 shrink-0" strokeWidth={3} />
+                    <span>{t}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href={CHECKOUT_UPSELL}
+                className="mt-6 flex w-full items-center justify-between gap-2 rounded-2xl px-5 py-5 text-sm md:text-base font-extrabold uppercase text-[#3b0764] shadow-2xl hover:scale-[1.02] active:scale-[0.99] transition-transform"
+                style={{ background: "linear-gradient(90deg, #fde68a, #fbbf24)" }}
+              >
+                <span className="flex-1 text-center">Sim! Quero por R$ 18,87</span>
+                <span className="text-lg">→</span>
+              </a>
+
+              <button
+                type="button"
+                onClick={() => { setUpsellOpen(false); window.location.href = CHECKOUT_BASIC; }}
+                className="mt-4 text-[11px] md:text-xs font-medium text-white/60 underline underline-offset-4 hover:text-white/90 transition-colors cursor-pointer"
+              >
+                Não, perder essa oferta e levar apenas o livro
+              </button>
+            </div>
+          </div>
+          )}
         </DialogContent>
       </Dialog>
     </div>
