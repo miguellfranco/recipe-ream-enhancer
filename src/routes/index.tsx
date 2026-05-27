@@ -285,7 +285,7 @@ function Index() {
                 <p className="mt-1 text-xs text-muted-foreground">à vista — somente o livro</p>
                 <button
                   type="button"
-                  onClick={() => setUpsellOpen(true)}
+                  onClick={() => { setUpsellStage("first"); setUpsellOpen(true); }}
                   className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-4 text-sm font-bold border-2 border-border bg-background text-foreground hover:bg-muted transition-colors cursor-pointer"
                 >
                   QUERO SÓ O LIVRO
