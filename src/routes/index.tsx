@@ -327,7 +327,7 @@ function Index() {
             </div>
 
             {/* PREMIUM PLAN — destaque */}
-            <div className="relative rounded-3xl border-2 border-primary bg-card shadow-[var(--shadow-glow)] p-8 md:p-10 flex flex-col scale-100 lg:scale-[1.03] z-10">
+            <div id="pacote-completo" className="relative rounded-3xl border-2 border-primary bg-card shadow-[var(--shadow-glow)] p-8 md:p-10 flex flex-col scale-100 lg:scale-[1.03] z-10 scroll-mt-24">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                 <span className="inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-white shadow-lg" style={{ background: "var(--gradient-cta)" }}>
                   <Star className="h-3.5 w-3.5 fill-current" /> Mais escolhido — 92% dos alunos
