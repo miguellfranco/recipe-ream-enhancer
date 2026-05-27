@@ -460,7 +460,7 @@ function Index() {
                 </span>
               </h3>
               <p className="mt-3 text-sm text-white/85">
-                Leve o <strong className="text-white">Pacote Completo</strong> + <strong className="text-white">2 bônus exclusivos</strong> que só aparecem aqui:
+                Leve o <strong className="text-white">Pacote Completo</strong> + <strong className="text-white">4 bônus exclusivos</strong> que só aparecem aqui:
               </p>
 
               <div className="mt-5 rounded-2xl bg-white/95 px-5 py-6 shadow-2xl">
