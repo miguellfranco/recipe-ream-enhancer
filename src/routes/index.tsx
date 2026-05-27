@@ -26,9 +26,24 @@ const CHECKOUT_BASIC = "https://pay.kiwify.com.br/pipvVXn";
 const CHECKOUT_UPSELL = CHECKOUT;
 
 function CTA({ children = "QUERO TER CURA FÍSICA E EMOCIONAL", className = "", href = "#comprar" }: { children?: React.ReactNode; className?: string; href?: string }) {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!href.startsWith("#")) return;
+    e.preventDefault();
+    const target = document.getElementById("pacote-completo") || document.getElementById(href.slice(1));
+    if (!target) return;
+    const rect = target.getBoundingClientRect();
+    const top = window.scrollY + rect.top - Math.max(0, (window.innerHeight - rect.height) / 2);
+    window.scrollTo({ top, behavior: "smooth" });
+    target.classList.remove("upsell-flash");
+    // force reflow then re-add so it replays
+    void target.offsetWidth;
+    target.classList.add("upsell-flash");
+    window.setTimeout(() => target.classList.remove("upsell-flash"), 2200);
+  };
   return (
     <a
       href={href}
+      onClick={handleClick}
       className={`inline-flex items-center justify-center gap-2 rounded-full px-8 py-5 text-base md:text-lg font-bold tracking-wide text-[color:var(--cta-foreground)] shadow-[var(--shadow-soft)] transition-transform hover:scale-[1.02] active:scale-[0.99] ${className}`}
       style={{ background: "var(--gradient-cta)" }}
     >
@@ -312,7 +327,7 @@ function Index() {
             </div>
 
             {/* PREMIUM PLAN — destaque */}
-            <div className="relative rounded-3xl border-2 border-primary bg-card shadow-[var(--shadow-glow)] p-8 md:p-10 flex flex-col scale-100 lg:scale-[1.03] z-10">
+            <div id="pacote-completo" className="relative rounded-3xl border-2 border-primary bg-card shadow-[var(--shadow-glow)] p-8 md:p-10 flex flex-col scale-100 lg:scale-[1.03] z-10 scroll-mt-24">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                 <span className="inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-white shadow-lg" style={{ background: "var(--gradient-cta)" }}>
                   <Star className="h-3.5 w-3.5 fill-current" /> Mais escolhido — 92% dos alunos
