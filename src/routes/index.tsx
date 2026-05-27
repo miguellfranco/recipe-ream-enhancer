@@ -26,9 +26,24 @@ const CHECKOUT_BASIC = "https://pay.kiwify.com.br/pipvVXn";
 const CHECKOUT_UPSELL = CHECKOUT;
 
 function CTA({ children = "QUERO TER CURA FÍSICA E EMOCIONAL", className = "", href = "#comprar" }: { children?: React.ReactNode; className?: string; href?: string }) {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!href.startsWith("#")) return;
+    e.preventDefault();
+    const target = document.getElementById("pacote-completo") || document.getElementById(href.slice(1));
+    if (!target) return;
+    const rect = target.getBoundingClientRect();
+    const top = window.scrollY + rect.top - Math.max(0, (window.innerHeight - rect.height) / 2);
+    window.scrollTo({ top, behavior: "smooth" });
+    target.classList.remove("upsell-flash");
+    // force reflow then re-add so it replays
+    void target.offsetWidth;
+    target.classList.add("upsell-flash");
+    window.setTimeout(() => target.classList.remove("upsell-flash"), 2200);
+  };
   return (
     <a
       href={href}
+      onClick={handleClick}
       className={`inline-flex items-center justify-center gap-2 rounded-full px-8 py-5 text-base md:text-lg font-bold tracking-wide text-[color:var(--cta-foreground)] shadow-[var(--shadow-soft)] transition-transform hover:scale-[1.02] active:scale-[0.99] ${className}`}
       style={{ background: "var(--gradient-cta)" }}
     >
