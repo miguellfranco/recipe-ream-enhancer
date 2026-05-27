@@ -163,20 +163,38 @@ function Index() {
       </section>
 
       {/* SCIENCE */}
-      <section className="py-16 px-5">
-        <div className="max-w-5xl mx-auto">
-          <SectionTitle kicker="Base científica">
-            100% fundamentado em princípios reconhecidos pela medicina integrativa
-          </SectionTitle>
+      <section className="relative py-20 px-5 overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 opacity-70" style={{ background: "radial-gradient(circle at 15% 10%, oklch(0.85 0.10 300 / 0.45), transparent 55%), radial-gradient(circle at 90% 90%, oklch(0.82 0.12 320 / 0.45), transparent 55%)" }} />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px" style={{ background: "linear-gradient(90deg, transparent, oklch(0.55 0.20 300 / 0.4), transparent)" }} />
+        <div className="relative max-w-5xl mx-auto">
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[10px] font-extrabold uppercase tracking-[0.25em] text-white shadow-lg mb-5" style={{ background: "linear-gradient(90deg, #7e22ce, #c026d3)" }}>
+              <Sparkles className="h-3 w-3" /> Base científica comprovada
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black leading-tight tracking-tight text-foreground">
+              100% fundamentado em princípios <br className="hidden md:block" />
+              reconhecidos pela <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, #7e22ce, #a855f7, #c026d3)" }}>medicina integrativa</span>
+            </h2>
+            <div className="mx-auto mt-4 h-1 w-24 rounded-full" style={{ background: "linear-gradient(90deg, #7e22ce, #c026d3)" }} />
+          </div>
+
           <div className="grid md:grid-cols-3 gap-5">
             {[
-              { tag: "OMS", text: "Evidências científicas sobre a conexão mente-corpo reconhecidas pela Organização Mundial da Saúde." },
-              { tag: "Harvard", text: "Estudos mostram que técnicas integrativas reduzem marcadores de inflamação e melhoram a saúde emocional." },
-              { tag: "Journal of Ethnopharmacology", text: "Ervas como valeriana e lavanda têm efeitos comprovados contra insônia, ansiedade e dores crônicas." },
+              { tag: "OMS", icon: "🌍", text: "Evidências científicas sobre a conexão mente-corpo reconhecidas pela Organização Mundial da Saúde." },
+              { tag: "Harvard", icon: "🎓", text: "Estudos mostram que técnicas integrativas reduzem marcadores de inflamação e melhoram a saúde emocional." },
+              { tag: "Journal of Ethnopharmacology", icon: "🌿", text: "Ervas como valeriana e lavanda têm efeitos comprovados contra insônia, ansiedade e dores crônicas." },
             ].map((c) => (
-              <div key={c.tag} className="rounded-2xl bg-card border border-border p-6 shadow-sm hover:shadow-[var(--shadow-soft)] transition-shadow">
-                <div className="text-xs font-bold uppercase tracking-widest text-primary mb-3">{c.tag}</div>
-                <p className="text-sm md:text-base text-foreground leading-relaxed">{c.text}</p>
+              <div key={c.tag} className="group relative rounded-2xl p-[1.5px] shadow-lg transition-all hover:-translate-y-1 hover:shadow-2xl" style={{ background: "linear-gradient(140deg, oklch(0.75 0.18 300 / 0.7), oklch(0.85 0.12 320 / 0.3), oklch(0.75 0.18 280 / 0.7))" }}>
+                <div className="h-full rounded-2xl bg-white p-6 flex flex-col">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl text-lg shadow-md" style={{ background: "linear-gradient(135deg, oklch(0.95 0.04 300), oklch(0.90 0.08 320))" }}>
+                      {c.icon}
+                    </div>
+                    <div className="text-xs font-black uppercase tracking-widest bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, #7e22ce, #c026d3)" }}>{c.tag}</div>
+                  </div>
+                  <p className="text-sm md:text-base text-foreground leading-relaxed">{c.text}</p>
+                  <div className="mt-5 h-0.5 w-full rounded-full opacity-30" style={{ background: "linear-gradient(90deg, #7e22ce, transparent)" }} />
+                </div>
               </div>
             ))}
           </div>
@@ -458,11 +476,13 @@ function Index() {
               </div>
 
               <div className="mt-5 rounded-2xl bg-white/10 border border-white/20 backdrop-blur p-4 text-left">
-                <p className="text-[11px] font-extrabold uppercase tracking-widest text-yellow-200 mb-3 text-center">+ 2 Bônus exclusivos dessa oferta</p>
+                <p className="text-[11px] font-extrabold uppercase tracking-widest text-yellow-200 mb-3 text-center">+ 4 Bônus exclusivos dessa oferta</p>
                 <ul className="space-y-2.5">
                   {[
                     { t: "Manual Secreto dos Óleos Essenciais", s: "50 sinergias para cura emocional, sono e ansiedade" },
                     { t: "Banhos Sagrados de Limpeza Energética", s: "30 rituais ancestrais de descarrego e proteção" },
+                    { t: "Desafio de 7 Dias de Limpeza Energética", s: "Método prático para restaurar sua energia e elevar sua vibração em minutos por dia" },
+                    { t: "Manual de Proteção Espiritual e Limpeza da Energia", s: "Técnicas simples e poderosas para proteger sua energia no dia a dia" },
                   ].map((b) => (
                     <li key={b.t} className="flex items-start gap-3">
                       <span className="flex h-7 w-7 items-center justify-center rounded-full bg-yellow-300 text-[#6b21a8] shrink-0 text-sm font-black">★</span>
