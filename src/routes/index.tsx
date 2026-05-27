@@ -25,10 +25,10 @@ const CHECKOUT = "https://pay.kiwify.com.br/pipvVXn";
 const CHECKOUT_BASIC = "https://pay.kiwify.com.br/pipvVXn";
 const CHECKOUT_UPSELL = CHECKOUT;
 
-function CTA({ children = "QUERO TER CURA FÍSICA E EMOCIONAL", className = "" }) {
+function CTA({ children = "QUERO TER CURA FÍSICA E EMOCIONAL", className = "", href = "#comprar" }: { children?: React.ReactNode; className?: string; href?: string }) {
   return (
     <a
-      href={CHECKOUT}
+      href={href}
       className={`inline-flex items-center justify-center gap-2 rounded-full px-8 py-5 text-base md:text-lg font-bold tracking-wide text-[color:var(--cta-foreground)] shadow-[var(--shadow-soft)] transition-transform hover:scale-[1.02] active:scale-[0.99] ${className}`}
       style={{ background: "var(--gradient-cta)" }}
     >
@@ -94,6 +94,7 @@ const faqs = [
 
 function Index() {
   const [upsellOpen, setUpsellOpen] = useState(false);
+  const [upsellStage, setUpsellStage] = useState<"first" | "final">("first");
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -332,7 +333,7 @@ function Index() {
                   <div className="text-5xl md:text-6xl font-extrabold text-primary leading-none">12x R$ 3,58</div>
                   <div className="mt-2 text-lg font-semibold">ou <span className="text-foreground font-extrabold">R$ 37</span> à vista</div>
                 </div>
-                <CTA>QUERO O PACOTE COMPLETO</CTA>
+              <CTA href={CHECKOUT}>QUERO O PACOTE COMPLETO</CTA>
                 <p className="mt-3 text-xs font-semibold text-[color:var(--cta)]">⚡ Economize R$ 460 escolhendo o pacote completo</p>
               </div>
             </div>
