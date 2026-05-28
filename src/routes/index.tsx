@@ -1,8 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Check, Star, Shield, Sparkles, BookOpen, Heart, Infinity as InfinityIcon, MessageCircle, Printer, Trophy } from "lucide-react";
+import { Check, Star, Sparkles, BookOpen, Heart, Infinity as InfinityIcon, MessageCircle, Printer, Trophy } from "lucide-react";
 import { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import produtoMockup from "@/assets/produto-mockup.png";
+import previaFibromialgia from "@/assets/previa-fibromialgia.png";
+import previaAcne from "@/assets/previa-acne.png";
+import previaCristais from "@/assets/previa-cristais.png";
+import previaErvas from "@/assets/previa-ervas.png";
+import previaAplicacao from "@/assets/previa-aplicacao.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -15,8 +20,6 @@ export const Route = createFileRoute("/")({
 });
 
 const HERO_IMG = produtoMockup;
-const PRODUCT_FULL = produtoMockup;
-const SEAL = "https://cocriadordeluz.com.br/wp-content/uploads/2024/11/SELO-BLOCO-08-3.png";
 const BONUS_1 = "https://cocriadordeluz.com.br/wp-content/uploads/2024/11/Design_sem_nome__66_-removebg-preview-1-e1731803151818.png";
 const BONUS_2 = "https://cocriadordeluz.com.br/wp-content/uploads/2024/11/Design_sem_nome__65_-removebg-preview-1.png";
 const BONUS_3 = "https://cocriadordeluz.com.br/wp-content/uploads/2024/11/Design_sem_nome__63_-removebg-preview-1.png";
@@ -104,7 +107,6 @@ const faqs = [
   { q: "Não consigo essas informações de graça na internet?", a: "Algumas informações soltas existem online, mas o Guia reúne mais de 150 receitas catalogadas e validadas em um único material, com protocolos testados e respaldo da medicina integrativa." },
   { q: "Esses métodos têm base científica?", a: "Sim. A OMS reconhece a integração corpo-mente, e pesquisas de Harvard mostram que terapias complementares reduzem marcadores de estresse. Não é misticismo — é abordagem holística com base científica." },
   { q: "Tenho pouco tempo livre. Consigo aplicar mesmo assim?", a: "Sim. As receitas levam poucos minutos por dia e se encaixam na rotina. Você ainda recebe o Planner de Autocuidado para implementar com eficiência." },
-  { q: "Como funciona a garantia de 7 dias?", a: "Se nos primeiros 7 dias você não estiver satisfeito(a), basta chamar pelo WhatsApp e devolvemos 100% do valor. Sem perguntas, sem burocracia." },
 ];
 
 function Index() {
