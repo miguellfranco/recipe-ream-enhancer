@@ -173,8 +173,15 @@ function Index() {
         <div className="max-w-4xl mx-auto">
           <SectionTitle kicker="Sua nova rotina">Este guia será sua BÍBLIA de Autocura Energética</SectionTitle>
           <div className="space-y-5 text-base md:text-lg text-muted-foreground leading-relaxed">
-            <p>Quando uma pessoa não consegue lidar adequadamente com suas emoções, o corpo acaba <strong className="text-foreground">somatizando</strong> essas questões, resultando em doenças físicas.</p>
-            <p>A psicossomatização é uma forma do seu corpo expressar a necessidade de resolver conflitos emocionais. O <strong className="text-foreground">Guia de Autocura Energética</strong> entrega técnicas holísticas práticas para restaurar 100% do seu equilíbrio emocional — promovendo a cura de dentro para fora.</p>
+            <p>
+              Quando uma pessoa não consegue lidar adequadamente com suas emoções, o corpo acaba <strong className="text-foreground underline decoration-primary decoration-2 underline-offset-4">somatizando</strong> essas questões, resultando em <strong className="text-foreground">doenças físicas</strong>.
+            </p>
+            <p className="text-foreground font-semibold">
+              A psicossomatização é uma forma do seu corpo expressar a necessidade de resolução de conflitos emocionais que <span className="text-primary">não foram resolvidos conscientemente</span> por você.
+            </p>
+            <p>
+              O <strong className="text-foreground">“Guia da Autocura Energética”</strong> é a solução ideal para esses problemas, fornecendo técnicas holísticas práticas para restaurar <strong className="text-foreground">100% o seu equilíbrio emocional e energético</strong>, aliviando sintomas psicossomáticos e <strong className="text-foreground underline decoration-primary decoration-2 underline-offset-4">promovendo a cura de dentro para fora</strong>.
+            </p>
           </div>
         </div>
       </section>
