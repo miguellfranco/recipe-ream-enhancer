@@ -263,22 +263,7 @@ function Index() {
 
       {/* PREVIEW */}
       <section className="py-16 px-5 bg-foreground text-background">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">Veja uma prévia do conteúdo do Guia</h2>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              { img: previaFibromialgia, title: "Prévia sobre fibromialgia" },
-              { img: previaAcne, title: "Prévia sobre acne" },
-              { img: previaCristais, title: "Prévia sobre cristais de limpeza" },
-              { img: previaErvas, title: "Prévia sobre ervas e chás" },
-              { img: previaAplicacao, title: "Prévia sobre aplicação prática" },
-            ].map((item) => (
-              <div key={item.title} className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-2xl">
-                <img src={item.img} alt={item.title} className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.02]" loading="lazy" />
-              </div>
-            ))}
-          </div>
-        </div>
+        <PreviewCarousel />
       </section>
 
       {/* BONUSES */}
