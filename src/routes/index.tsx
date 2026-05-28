@@ -258,7 +258,19 @@ function Index() {
       <section className="py-16 px-5 bg-foreground text-background">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-8">Veja uma prévia do conteúdo do Guia</h2>
-          <img src={PRODUCT_FULL} alt="Páginas internas do Guia de Autocura Energética" className="rounded-2xl shadow-2xl mx-auto w-full max-w-2xl" />
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { img: previaFibromialgia, title: "Prévia sobre fibromialgia" },
+              { img: previaAcne, title: "Prévia sobre acne" },
+              { img: previaCristais, title: "Prévia sobre cristais de limpeza" },
+              { img: previaErvas, title: "Prévia sobre ervas e chás" },
+              { img: previaAplicacao, title: "Prévia sobre aplicação prática" },
+            ].map((item) => (
+              <div key={item.title} className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-2xl">
+                <img src={item.img} alt={item.title} className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.02]" loading="lazy" />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -275,10 +287,10 @@ function Index() {
               { tag: "🎁 Super Bônus", img: BONUS_3, title: "Leitura Numerológica Cabalística", text: "Análise personalizada baseada no seu nome completo e data de nascimento — entregue em até 24h." },
             ].map((b) => (
               <div key={b.title} className="rounded-2xl border border-primary/20 bg-card p-6 text-center shadow-sm hover:shadow-[var(--shadow-soft)] transition-shadow">
-                <div className="inline-block rounded-full bg-accent/15 px-3 py-1 text-xs font-bold text-accent-foreground/80 mb-4">{b.tag}</div>
+                <div className={`inline-block rounded-full px-4 py-1.5 text-xs font-extrabold mb-4 ${b.tag === "🎁 Super Bônus" ? "bg-primary text-primary-foreground shadow-[var(--shadow-glow)]" : "bg-accent/15 text-accent-foreground/80"}`}>{b.tag}</div>
                 <img src={b.img} alt={b.title} className="h-44 mx-auto object-contain mb-4" />
-                <h3 className="font-bold text-lg mb-2">{b.title}</h3>
-                <p className="text-sm text-muted-foreground">{b.text}</p>
+                <h3 className={`font-bold text-lg mb-2 ${b.tag === "🎁 Super Bônus" ? "text-primary" : ""}`}>{b.title}</h3>
+                <p className={`text-sm ${b.tag === "🎁 Super Bônus" ? "text-foreground font-medium" : "text-muted-foreground"}`}>{b.text}</p>
               </div>
             ))}
           </div>
@@ -374,13 +386,6 @@ function Index() {
             </div>
           </div>
 
-          <div className="mt-12 flex flex-col items-center gap-3">
-            <img src={SEAL} alt="Selo de garantia de 7 dias" className="h-24" />
-            <p className="text-sm text-muted-foreground max-w-md text-center inline-flex items-start gap-2">
-              <Shield className="h-5 w-5 text-[color:var(--cta)] shrink-0 mt-0.5" />
-              <span><strong className="text-foreground">Garantia incondicional de 7 dias</strong> em qualquer plano. Se não for para você, devolvemos 100% do investimento — sem perguntas.</span>
-            </p>
-          </div>
         </div>
       </section>
 
