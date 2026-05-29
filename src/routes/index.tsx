@@ -551,6 +551,30 @@ function Index() {
         </div>
       </section>
 
+      {/* GARANTIA 7 DIAS */}
+      <section className="py-16 px-5" style={{ background: "linear-gradient(160deg, oklch(0.96 0.04 85) 0%, oklch(0.92 0.08 75) 100%)" }}>
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="inline-block rounded-full bg-foreground/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-foreground mb-6">
+            Garantia Incondicional
+          </div>
+          <div className="flex justify-center mb-6">
+            <img
+              src={garantia7Dias}
+              alt="Selo de garantia de 7 dias"
+              className="w-40 md:w-48 h-auto drop-shadow-xl"
+            />
+          </div>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground leading-tight mb-4">
+            Garantia incondicional de 7 dias
+          </h2>
+          <p className="text-base md:text-lg text-foreground/80 leading-relaxed">
+            Se nos primeiros <strong>7 dias</strong> você não estiver satisfeito(a), basta nos chamar
+            pelo <strong>WhatsApp</strong> e devolvemos <strong>100% do seu dinheiro</strong>.
+            Sem perguntas, sem burocracia. O risco é todo nosso.
+          </p>
+        </div>
+      </section>
+
       <footer className="py-10 px-5 border-t border-border text-center text-xs text-muted-foreground">
         © {new Date().getFullYear()} Guia de Autocura Energética. Todos os direitos reservados.
       </footer>
