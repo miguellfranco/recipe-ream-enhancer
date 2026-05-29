@@ -8,6 +8,10 @@ import previaAcne from "@/assets/previa-acne.png";
 import previaCristais from "@/assets/previa-cristais.png";
 import previaErvas from "@/assets/previa-ervas.png";
 import previaAplicacao from "@/assets/previa-aplicacao.png";
+import whatsapp1 from "@/assets/whatsapp-1.png";
+import whatsapp2 from "@/assets/whatsapp-2.png";
+import whatsapp3 from "@/assets/whatsapp-3.jpg";
+import garantia7Dias from "@/assets/garantia-7-dias.jpg";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -289,6 +293,33 @@ function Index() {
         </div>
       </section>
 
+      {/* WHATSAPP TESTIMONIALS */}
+      <section className="py-16 px-5 bg-secondary/40">
+        <div className="max-w-5xl mx-auto">
+          <SectionTitle kicker="Depoimentos reais">
+            Veja o que nossos alunos estão dizendo no WhatsApp
+          </SectionTitle>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+            {[whatsapp1, whatsapp2, whatsapp3].map((src, i) => (
+              <div
+                key={i}
+                className="rounded-2xl overflow-hidden border border-border bg-card shadow-[var(--shadow-soft)] transition-transform hover:scale-[1.02]"
+              >
+                <img
+                  src={src}
+                  alt={`Depoimento de aluna no WhatsApp ${i + 1}`}
+                  className="w-full h-auto block"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 text-center text-sm text-muted-foreground">
+            Mensagens reais enviadas por alunas após aplicarem as práticas do Guia.
+          </p>
+        </div>
+      </section>
+
       {/* BÍBLIA */}
       <section className="py-16 px-5 bg-secondary/40">
         <div className="max-w-4xl mx-auto">
@@ -517,6 +548,30 @@ function Index() {
               </details>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* GARANTIA 7 DIAS */}
+      <section className="py-16 px-5" style={{ background: "linear-gradient(160deg, oklch(0.96 0.04 85) 0%, oklch(0.92 0.08 75) 100%)" }}>
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="inline-block rounded-full bg-foreground/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-foreground mb-6">
+            Garantia Incondicional
+          </div>
+          <div className="flex justify-center mb-6">
+            <img
+              src={garantia7Dias}
+              alt="Selo de garantia de 7 dias"
+              className="w-40 md:w-48 h-auto drop-shadow-xl"
+            />
+          </div>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground leading-tight mb-4">
+            Garantia incondicional de 7 dias
+          </h2>
+          <p className="text-base md:text-lg text-foreground/80 leading-relaxed">
+            Se nos primeiros <strong>7 dias</strong> você não estiver satisfeito(a), basta nos chamar
+            pelo <strong>WhatsApp</strong> e devolvemos <strong>100% do seu dinheiro</strong>.
+            Sem perguntas, sem burocracia. O risco é todo nosso.
+          </p>
         </div>
       </section>
 
