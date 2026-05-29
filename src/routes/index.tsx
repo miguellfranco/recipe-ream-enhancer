@@ -118,41 +118,12 @@ const PREVIEW_SLIDES = [
 ];
 
 const PREVIEW_TOPICS: { title: string; bullets: string[] }[] = [
-  { title: "Boas-vindas e Visão Geral do Guia", bullets: [
-    "Como este guia irá transformar sua saúde física, emocional e mental.",
-    "Melhores práticas para aproveitar ao máximo o conteúdo.",
-  ]},
-  { title: "Fundamentos da Cura com Cristais e Ervas", bullets: [
-    "Introdução à energia dos cristais e sua influência no campo energético humano.",
-    "Como escolher o Cristal Certo: propriedades e benefícios de diferentes cristais.",
-  ]},
-  { title: "A força energética das Ervas e Chás", bullets: [
-    "Como ervas e chás podem complementar o uso de cristais para restaurar o equilíbrio do corpo.",
-    "Introdução ao Uso correto de Ervas e Chás na Cura Energética.",
-  ]},
-  { title: "Preparação e Uso Correto dos Materiais", bullets: [
-    "Técnicas para limpeza, energização e programação dos cristais.",
-    "Elixires de Cristais: como preparar seus primeiros elixires para uso diário.",
-  ]},
-  { title: "Preparação de Chás e Infusões Medicinais", bullets: [
-    "Técnicas para potencializar os efeitos curativos das ervas.",
-  ]},
-  { title: "Guia prático de Cristais e Ervas para Saúde Física", bullets: [
-    "Tratamentos catalogados para mais de 50 patologias: dores de cabeça, insônia, ansiedade, problemas digestivos, dores musculares e mais.",
-    "Receitas práticas com combinações de cristais e chás específicos para cada condição.",
-  ]},
-  { title: "Cura Energética e Alinhamento dos Chakras", bullets: [
-    "Identificação e tratamento dos chakras desequilibrados.",
-    "Guia para usar cristais específicos para alinhar e equilibrar cada um dos 7 chakras.",
-  ]},
-  { title: "Receitas e Tratamentos Especiais", bullets: [
-    "Receitas avançadas para preparar elixires de cura emocional e física.",
-    "Protocolos para tratamentos específicos: melhora do sono, aumento de energia e foco mental.",
-  ]},
-  { title: "Aplicação Prática e Uso Diário", bullets: [
-    "Recomendações para terapeutas e praticantes que desejam aplicar esses conhecimentos em consultas.",
-    "Consultas Personalizadas: como criar protocolos de cura adaptados para cada caso.",
-  ]},
+  { title: "Boas-vindas e Visão Geral", bullets: ["Como o guia vai transformar sua saúde física, emocional e mental."] },
+  { title: "Fundamentos de Cristais e Ervas", bullets: ["Energia dos cristais e como escolher o cristal certo para você."] },
+  { title: "Ervas e Chás Energéticos", bullets: ["Como ervas e chás restauram o equilíbrio do corpo."] },
+  { title: "Preparação e Uso Correto", bullets: ["Limpeza, energização e elixires de cristais para o dia a dia."] },
+  { title: "Saúde Física + Chakras", bullets: ["Tratamentos para +50 patologias e alinhamento dos 7 chakras."] },
+  { title: "Aplicação Prática Diária", bullets: ["Protocolos personalizados para sono, energia e foco mental."] },
 ];
 
 function PreviewCarousel() {
