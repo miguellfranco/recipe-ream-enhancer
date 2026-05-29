@@ -118,41 +118,12 @@ const PREVIEW_SLIDES = [
 ];
 
 const PREVIEW_TOPICS: { title: string; bullets: string[] }[] = [
-  { title: "Boas-vindas e Visão Geral do Guia", bullets: [
-    "Como este guia irá transformar sua saúde física, emocional e mental.",
-    "Melhores práticas para aproveitar ao máximo o conteúdo.",
-  ]},
-  { title: "Fundamentos da Cura com Cristais e Ervas", bullets: [
-    "Introdução à energia dos cristais e sua influência no campo energético humano.",
-    "Como escolher o Cristal Certo: propriedades e benefícios de diferentes cristais.",
-  ]},
-  { title: "A força energética das Ervas e Chás", bullets: [
-    "Como ervas e chás podem complementar o uso de cristais para restaurar o equilíbrio do corpo.",
-    "Introdução ao Uso correto de Ervas e Chás na Cura Energética.",
-  ]},
-  { title: "Preparação e Uso Correto dos Materiais", bullets: [
-    "Técnicas para limpeza, energização e programação dos cristais.",
-    "Elixires de Cristais: como preparar seus primeiros elixires para uso diário.",
-  ]},
-  { title: "Preparação de Chás e Infusões Medicinais", bullets: [
-    "Técnicas para potencializar os efeitos curativos das ervas.",
-  ]},
-  { title: "Guia prático de Cristais e Ervas para Saúde Física", bullets: [
-    "Tratamentos catalogados para mais de 50 patologias: dores de cabeça, insônia, ansiedade, problemas digestivos, dores musculares e mais.",
-    "Receitas práticas com combinações de cristais e chás específicos para cada condição.",
-  ]},
-  { title: "Cura Energética e Alinhamento dos Chakras", bullets: [
-    "Identificação e tratamento dos chakras desequilibrados.",
-    "Guia para usar cristais específicos para alinhar e equilibrar cada um dos 7 chakras.",
-  ]},
-  { title: "Receitas e Tratamentos Especiais", bullets: [
-    "Receitas avançadas para preparar elixires de cura emocional e física.",
-    "Protocolos para tratamentos específicos: melhora do sono, aumento de energia e foco mental.",
-  ]},
-  { title: "Aplicação Prática e Uso Diário", bullets: [
-    "Recomendações para terapeutas e praticantes que desejam aplicar esses conhecimentos em consultas.",
-    "Consultas Personalizadas: como criar protocolos de cura adaptados para cada caso.",
-  ]},
+  { title: "Boas-vindas e Visão Geral", bullets: ["Como o guia vai transformar sua saúde física, emocional e mental."] },
+  { title: "Fundamentos de Cristais e Ervas", bullets: ["Energia dos cristais e como escolher o cristal certo para você."] },
+  { title: "Ervas e Chás Energéticos", bullets: ["Como ervas e chás restauram o equilíbrio do corpo."] },
+  { title: "Preparação e Uso Correto", bullets: ["Limpeza, energização e elixires de cristais para o dia a dia."] },
+  { title: "Saúde Física + Chakras", bullets: ["Tratamentos para +50 patologias e alinhamento dos 7 chakras."] },
+  { title: "Aplicação Prática Diária", bullets: ["Protocolos personalizados para sono, energia e foco mental."] },
 ];
 
 function PreviewCarousel() {
@@ -188,11 +159,11 @@ function PreviewCarousel() {
 
   return (
     <div className="max-w-5xl mx-auto">
-      <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">
+      <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-foreground">
         Veja uma <span className="text-primary">prévia do conteúdo</span> do Guia de Autocura Energética:
       </h2>
 
-      <div className="relative rounded-3xl bg-white p-3 md:p-5 shadow-2xl">
+      <div className="relative rounded-3xl bg-card border border-border p-3 md:p-5 shadow-[var(--shadow-soft)]">
         <div className="relative">
           <div
             ref={scrollerRef}
@@ -211,7 +182,7 @@ function PreviewCarousel() {
             type="button"
             aria-label="Anterior"
             onClick={() => scrollTo(index - 1)}
-            className="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 h-10 w-10 items-center justify-center rounded-full bg-foreground/80 text-background shadow-lg hover:bg-foreground transition"
+            className="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg hover:opacity-90 transition"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
@@ -219,7 +190,7 @@ function PreviewCarousel() {
             type="button"
             aria-label="Próximo"
             onClick={() => scrollTo(index + 1)}
-            className="hidden sm:flex absolute right-2 top-1/2 -translate-y-1/2 h-10 w-10 items-center justify-center rounded-full bg-foreground/80 text-background shadow-lg hover:bg-foreground transition"
+            className="hidden sm:flex absolute right-2 top-1/2 -translate-y-1/2 h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg hover:opacity-90 transition"
           >
             <ChevronRight className="h-5 w-5" />
           </button>
@@ -231,27 +202,27 @@ function PreviewCarousel() {
               key={i}
               aria-label={`Ir para slide ${i + 1}`}
               onClick={() => scrollTo(i)}
-              className={`h-2 rounded-full transition-all ${i === index ? "w-6 bg-primary" : "w-2 bg-foreground/30"}`}
+              className={`h-2 rounded-full transition-all ${i === index ? "w-6 bg-primary" : "w-2 bg-muted-foreground/40"}`}
             />
           ))}
         </div>
       </div>
 
-      <div className="mt-10 grid gap-5 sm:grid-cols-2">
+      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {PREVIEW_TOPICS.map((t) => (
-          <div key={t.title} className="rounded-2xl bg-white/5 border border-white/10 p-5">
-            <div className="flex items-start gap-2 mb-3">
+          <div key={t.title} className="rounded-2xl bg-card border border-border p-5">
+            <div className="flex items-start gap-2 mb-2">
               <Sparkles className="h-4 w-4 text-primary mt-1 shrink-0" />
-              <h3 className="font-bold text-primary leading-snug">{t.title}</h3>
+              <h3 className="font-bold text-foreground leading-snug">{t.title}</h3>
             </div>
-            <ul className="space-y-2 pl-6">
+            <ul className="space-y-1 pl-6">
               {t.bullets.map((b, i) => (
-                <li key={i} className="list-disc text-sm text-background/80 leading-relaxed marker:text-primary/60">{b}</li>
+                <li key={i} className="list-disc text-sm text-muted-foreground leading-relaxed marker:text-primary/60">{b}</li>
               ))}
             </ul>
           </div>
         ))}
-        <div className="sm:col-span-2 text-center text-lg font-bold text-primary mt-2">
+        <div className="sm:col-span-2 lg:col-span-3 text-center text-lg font-bold text-primary mt-2">
           E muito, MUITO MAIS…
         </div>
       </div>
@@ -412,7 +383,7 @@ function Index() {
       </section>
 
       {/* PREVIEW */}
-      <section className="py-16 px-5 bg-foreground text-background">
+      <section className="py-16 px-5 bg-secondary/40">
         <PreviewCarousel />
       </section>
 
@@ -429,10 +400,10 @@ function Index() {
               { tag: "🎁 Super Bônus", img: BONUS_3, title: "Leitura Numerológica Cabalística", text: "Análise personalizada baseada no seu nome completo e data de nascimento — entregue em até 24h." },
             ].map((b) => (
               <div key={b.title} className="rounded-2xl border border-primary/20 bg-card p-6 text-center shadow-sm hover:shadow-[var(--shadow-soft)] transition-shadow">
-                <div className={`inline-block rounded-full px-4 py-1.5 text-xs font-extrabold mb-4 ${b.tag === "🎁 Super Bônus" ? "bg-primary text-primary-foreground shadow-[var(--shadow-glow)]" : "bg-accent/15 text-accent-foreground/80"}`}>{b.tag}</div>
+                <div className="inline-block rounded-full px-4 py-1.5 text-xs font-extrabold mb-4 bg-primary text-primary-foreground shadow-[var(--shadow-glow)]">{b.tag}</div>
                 <img src={b.img} alt={b.title} className="h-44 mx-auto object-contain mb-4" />
-                <h3 className={`font-bold text-lg mb-2 ${b.tag === "🎁 Super Bônus" ? "text-primary" : ""}`}>{b.title}</h3>
-                <p className={`text-sm ${b.tag === "🎁 Super Bônus" ? "text-foreground font-medium" : "text-muted-foreground"}`}>{b.text}</p>
+                <h3 className="font-bold text-lg mb-2 text-foreground">{b.title}</h3>
+                <p className="text-sm text-muted-foreground">{b.text}</p>
               </div>
             ))}
           </div>
