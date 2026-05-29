@@ -383,7 +383,7 @@ function Index() {
       </section>
 
       {/* PREVIEW */}
-      <section className="py-16 px-5 bg-foreground text-background">
+      <section className="py-16 px-5 bg-secondary/40">
         <PreviewCarousel />
       </section>
 
@@ -400,10 +400,10 @@ function Index() {
               { tag: "🎁 Super Bônus", img: BONUS_3, title: "Leitura Numerológica Cabalística", text: "Análise personalizada baseada no seu nome completo e data de nascimento — entregue em até 24h." },
             ].map((b) => (
               <div key={b.title} className="rounded-2xl border border-primary/20 bg-card p-6 text-center shadow-sm hover:shadow-[var(--shadow-soft)] transition-shadow">
-                <div className={`inline-block rounded-full px-4 py-1.5 text-xs font-extrabold mb-4 ${b.tag === "🎁 Super Bônus" ? "bg-primary text-primary-foreground shadow-[var(--shadow-glow)]" : "bg-accent/15 text-accent-foreground/80"}`}>{b.tag}</div>
+                <div className="inline-block rounded-full px-4 py-1.5 text-xs font-extrabold mb-4 bg-primary text-primary-foreground shadow-[var(--shadow-glow)]">{b.tag}</div>
                 <img src={b.img} alt={b.title} className="h-44 mx-auto object-contain mb-4" />
-                <h3 className={`font-bold text-lg mb-2 ${b.tag === "🎁 Super Bônus" ? "text-primary" : ""}`}>{b.title}</h3>
-                <p className={`text-sm ${b.tag === "🎁 Super Bônus" ? "text-foreground font-medium" : "text-muted-foreground"}`}>{b.text}</p>
+                <h3 className="font-bold text-lg mb-2 text-foreground">{b.title}</h3>
+                <p className="text-sm text-muted-foreground">{b.text}</p>
               </div>
             ))}
           </div>
