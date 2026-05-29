@@ -8,6 +8,10 @@ import previaAcne from "@/assets/previa-acne.png";
 import previaCristais from "@/assets/previa-cristais.png";
 import previaErvas from "@/assets/previa-ervas.png";
 import previaAplicacao from "@/assets/previa-aplicacao.png";
+import whatsapp1 from "@/assets/whatsapp-1.png";
+import whatsapp2 from "@/assets/whatsapp-2.png";
+import whatsapp3 from "@/assets/whatsapp-3.jpg";
+import garantia7Dias from "@/assets/garantia-7-dias.jpg";
 
 export const Route = createFileRoute("/")({
   component: Index,
