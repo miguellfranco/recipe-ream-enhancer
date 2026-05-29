@@ -159,11 +159,11 @@ function PreviewCarousel() {
 
   return (
     <div className="max-w-5xl mx-auto">
-      <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">
+      <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-foreground">
         Veja uma <span className="text-primary">prévia do conteúdo</span> do Guia de Autocura Energética:
       </h2>
 
-      <div className="relative rounded-3xl bg-white p-3 md:p-5 shadow-2xl">
+      <div className="relative rounded-3xl bg-card border border-border p-3 md:p-5 shadow-[var(--shadow-soft)]">
         <div className="relative">
           <div
             ref={scrollerRef}
@@ -182,7 +182,7 @@ function PreviewCarousel() {
             type="button"
             aria-label="Anterior"
             onClick={() => scrollTo(index - 1)}
-            className="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 h-10 w-10 items-center justify-center rounded-full bg-foreground/80 text-background shadow-lg hover:bg-foreground transition"
+            className="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg hover:opacity-90 transition"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
@@ -190,7 +190,7 @@ function PreviewCarousel() {
             type="button"
             aria-label="Próximo"
             onClick={() => scrollTo(index + 1)}
-            className="hidden sm:flex absolute right-2 top-1/2 -translate-y-1/2 h-10 w-10 items-center justify-center rounded-full bg-foreground/80 text-background shadow-lg hover:bg-foreground transition"
+            className="hidden sm:flex absolute right-2 top-1/2 -translate-y-1/2 h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg hover:opacity-90 transition"
           >
             <ChevronRight className="h-5 w-5" />
           </button>
@@ -202,27 +202,27 @@ function PreviewCarousel() {
               key={i}
               aria-label={`Ir para slide ${i + 1}`}
               onClick={() => scrollTo(i)}
-              className={`h-2 rounded-full transition-all ${i === index ? "w-6 bg-primary" : "w-2 bg-foreground/30"}`}
+              className={`h-2 rounded-full transition-all ${i === index ? "w-6 bg-primary" : "w-2 bg-muted-foreground/40"}`}
             />
           ))}
         </div>
       </div>
 
-      <div className="mt-10 grid gap-5 sm:grid-cols-2">
+      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {PREVIEW_TOPICS.map((t) => (
-          <div key={t.title} className="rounded-2xl bg-white/5 border border-white/10 p-5">
-            <div className="flex items-start gap-2 mb-3">
+          <div key={t.title} className="rounded-2xl bg-card border border-border p-5">
+            <div className="flex items-start gap-2 mb-2">
               <Sparkles className="h-4 w-4 text-primary mt-1 shrink-0" />
-              <h3 className="font-bold text-primary leading-snug">{t.title}</h3>
+              <h3 className="font-bold text-foreground leading-snug">{t.title}</h3>
             </div>
-            <ul className="space-y-2 pl-6">
+            <ul className="space-y-1 pl-6">
               {t.bullets.map((b, i) => (
-                <li key={i} className="list-disc text-sm text-background/80 leading-relaxed marker:text-primary/60">{b}</li>
+                <li key={i} className="list-disc text-sm text-muted-foreground leading-relaxed marker:text-primary/60">{b}</li>
               ))}
             </ul>
           </div>
         ))}
-        <div className="sm:col-span-2 text-center text-lg font-bold text-primary mt-2">
+        <div className="sm:col-span-2 lg:col-span-3 text-center text-lg font-bold text-primary mt-2">
           E muito, MUITO MAIS…
         </div>
       </div>
