@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Check, Star, Sparkles, BookOpen, Heart, Infinity as InfinityIcon, MessageCircle, Printer, Trophy, ChevronLeft, ChevronRight } from "lucide-react";
+import { Check, Star, Sparkles, BookOpen, Heart, Infinity as InfinityIcon, MessageCircle, Printer, Trophy, ChevronLeft, ChevronRight, Globe, GraduationCap, Leaf, Gift, ShieldCheck } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import produtoMockup from "@/assets/produto-mockup.png";
