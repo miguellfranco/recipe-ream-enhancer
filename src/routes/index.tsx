@@ -576,7 +576,9 @@ function Index() {
         <DialogContent className="max-w-md p-0 overflow-hidden rounded-3xl bg-white border-0 max-h-[92vh] overflow-y-auto">
           {upsellStage === "first" ? (
           <div className="px-6 pt-8 pb-7 text-center">
-            <div className="text-5xl mb-4">🎁</div>
+            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary">
+              <Gift className="h-7 w-7" />
+            </div>
             <h3 className="text-2xl md:text-3xl font-extrabold text-[#0f172a] leading-tight">
               Espere! Oferta<br />Exclusiva!
             </h3>
