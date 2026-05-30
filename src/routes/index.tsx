@@ -274,31 +274,24 @@ function Index() {
         </div>
       </section>
 
-      {/* SOCIAL PROOF */}
-      <section className="py-14 px-5">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 rounded-full bg-accent/15 px-4 py-2 text-sm font-bold text-foreground mb-4">
-            <Trophy className="h-4 w-4 text-accent" />
-            Nº 1 em vendas no nicho de terapias holísticas
-          </div>
-          <p className="text-lg md:text-xl text-muted-foreground">
-            <strong className="text-foreground">+34.150 alunos</strong> e <strong className="text-foreground">12.823 avaliações positivas</strong>
-          </p>
-          <div className="flex justify-center gap-1 mt-3 text-accent">
-            {[...Array(5)].map((_, i) => <Star key={i} className="h-6 w-6 fill-current" />)}
-          </div>
-          <h2 className="text-2xl md:text-3xl font-bold mt-8 leading-snug">
-            8.202 mães, pais, avós e estudantes brasileiros relataram <span className="text-primary">alívio físico e emocional</span> seguindo as práticas do Guia.
-          </h2>
-        </div>
-      </section>
-
-      {/* WHATSAPP TESTIMONIALS */}
+      {/* SOCIAL PROOF + WHATSAPP TESTIMONIALS */}
       <section className="py-16 px-5 bg-secondary/40">
         <div className="max-w-5xl mx-auto">
-          <SectionTitle kicker="Depoimentos reais">
-            Veja o que nossos alunos estão dizendo no WhatsApp
-          </SectionTitle>
+          <div className="text-center max-w-3xl mx-auto mb-10">
+            <div className="inline-flex items-center gap-2 rounded-full bg-accent/15 px-4 py-2 text-sm font-bold text-foreground mb-5">
+              <Trophy className="h-4 w-4 text-accent" />
+              Nº 1 em vendas no nicho de terapias holísticas
+            </div>
+            <p className="text-lg md:text-xl text-muted-foreground">
+              <strong className="text-foreground">+34.150 alunos</strong> e <strong className="text-foreground">12.823 avaliações positivas</strong>
+            </p>
+            <div className="flex justify-center gap-1 mt-3 text-accent">
+              {[...Array(5)].map((_, i) => <Star key={i} className="h-6 w-6 fill-current" />)}
+            </div>
+            <h2 className="text-2xl md:text-3xl font-bold mt-6 leading-snug text-foreground">
+              8.202 mães, pais, avós e estudantes brasileiros relataram <span className="text-primary">alívio físico e emocional</span> seguindo as práticas do Guia — veja as mensagens reais que recebemos no WhatsApp:
+            </h2>
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
             {[whatsapp1, whatsapp2, whatsapp3].map((src, i) => (
               <div
@@ -314,9 +307,6 @@ function Index() {
               </div>
             ))}
           </div>
-          <p className="mt-6 text-center text-sm text-muted-foreground">
-            Mensagens reais enviadas por alunas após aplicarem as práticas do Guia.
-          </p>
         </div>
       </section>
 
