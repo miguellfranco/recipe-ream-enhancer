@@ -346,15 +346,15 @@ function Index() {
 
           <div className="grid md:grid-cols-3 gap-5">
             {[
-              { tag: "OMS", icon: "🌍", text: "Evidências científicas sobre a conexão mente-corpo reconhecidas pela Organização Mundial da Saúde." },
-              { tag: "Harvard", icon: "🎓", text: "Estudos mostram que técnicas integrativas reduzem marcadores de inflamação e melhoram a saúde emocional." },
-              { tag: "Journal of Ethnopharmacology", icon: "🌿", text: "Ervas como valeriana e lavanda têm efeitos comprovados contra insônia, ansiedade e dores crônicas." },
+              { tag: "OMS", Icon: Globe, text: "Evidências científicas sobre a conexão mente-corpo reconhecidas pela Organização Mundial da Saúde." },
+              { tag: "Harvard", Icon: GraduationCap, text: "Estudos mostram que técnicas integrativas reduzem marcadores de inflamação e melhoram a saúde emocional." },
+              { tag: "Journal of Ethnopharmacology", Icon: Leaf, text: "Ervas como valeriana e lavanda têm efeitos comprovados contra insônia, ansiedade e dores crônicas." },
             ].map((c) => (
               <div key={c.tag} className="group relative rounded-2xl p-[1.5px] shadow-lg transition-all hover:-translate-y-1 hover:shadow-2xl" style={{ background: "linear-gradient(140deg, oklch(0.75 0.18 300 / 0.7), oklch(0.85 0.12 320 / 0.3), oklch(0.75 0.18 280 / 0.7))" }}>
                 <div className="h-full rounded-2xl bg-white p-6 flex flex-col">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl text-lg shadow-md" style={{ background: "linear-gradient(135deg, oklch(0.95 0.04 300), oklch(0.90 0.08 320))" }}>
-                      {c.icon}
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl shadow-md text-primary" style={{ background: "linear-gradient(135deg, oklch(0.95 0.04 300), oklch(0.90 0.08 320))" }}>
+                      <c.Icon className="h-5 w-5" />
                     </div>
                     <div className="text-xs font-black uppercase tracking-widest bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, #7e22ce, #c026d3)" }}>{c.tag}</div>
                   </div>
@@ -416,12 +416,14 @@ function Index() {
           </SectionTitle>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { tag: "🎁 Presente 1", img: BONUS_1, title: "Planner de Autocuidado", text: "Calendário semanal para implementar suas práticas e acompanhar seu progresso." },
-              { tag: "🎁 Presente 2", img: BONUS_2, title: "Calendário Lunar de Rituais", text: "Calendário digital com todas as fases lunares e melhores dias para cada ritual." },
-              { tag: "🎁 Super Bônus", img: BONUS_3, title: "Leitura Numerológica Cabalística", text: "Análise personalizada baseada no seu nome completo e data de nascimento — entregue em até 24h." },
+              { tag: "Presente 1", img: BONUS_1, title: "Planner de Autocuidado", text: "Calendário semanal para implementar suas práticas e acompanhar seu progresso." },
+              { tag: "Presente 2", img: BONUS_2, title: "Calendário Lunar de Rituais", text: "Calendário digital com todas as fases lunares e melhores dias para cada ritual." },
+              { tag: "Super Bônus", img: BONUS_3, title: "Leitura Numerológica Cabalística", text: "Análise personalizada baseada no seu nome completo e data de nascimento — entregue em até 24h." },
             ].map((b) => (
               <div key={b.title} className="rounded-2xl border border-primary/20 bg-card p-6 text-center shadow-sm hover:shadow-[var(--shadow-soft)] transition-shadow">
-                <div className="inline-block rounded-full px-4 py-1.5 text-xs font-extrabold mb-4 bg-primary text-primary-foreground shadow-[var(--shadow-glow)]">{b.tag}</div>
+                <div className="inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-extrabold mb-4 bg-primary text-primary-foreground shadow-[var(--shadow-glow)]">
+                  <Gift className="h-3.5 w-3.5" /> {b.tag}
+                </div>
                 <img src={b.img} alt={b.title} className="h-44 mx-auto object-contain mb-4" />
                 <h3 className="font-bold text-lg mb-2 text-foreground">{b.title}</h3>
                 <p className="text-sm text-muted-foreground">{b.text}</p>
@@ -493,14 +495,14 @@ function Index() {
                 <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">Tudo que você vai receber:</p>
                 <ul className="text-left space-y-2.5 text-sm md:text-base">
                   {[
-                    "📘 Guia completo com +150 receitas holísticas",
-                    "🎁 Bônus 1 — Planner de Autocuidado Semanal",
-                    "🎁 Bônus 2 — Calendário Lunar de Rituais",
-                    "⭐ Super Bônus — Leitura Numerológica Cabalística personalizada",
-                    "🖨️ Versão pronta para impressão sem custo extra",
-                    "♾️ Acesso vitalício + atualizações gratuitas",
-                    "💬 Suporte individual no WhatsApp",
-                    "📲 Entrega 100% digital imediata",
+                    "Guia completo com +150 receitas holísticas",
+                    "Bônus 1 — Planner de Autocuidado Semanal",
+                    "Bônus 2 — Calendário Lunar de Rituais",
+                    "Super Bônus — Leitura Numerológica Cabalística personalizada",
+                    "Versão pronta para impressão sem custo extra",
+                    "Acesso vitalício + atualizações gratuitas",
+                    "Suporte individual no WhatsApp",
+                    "Entrega 100% digital imediata",
                   ].map((t) => (
                     <li key={t} className="flex gap-2 items-start"><Check className="h-5 w-5 text-[color:var(--cta)] shrink-0 mt-0.5" /><span>{t}</span></li>
                   ))}
