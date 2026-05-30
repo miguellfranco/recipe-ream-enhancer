@@ -544,26 +544,58 @@ function Index() {
       </section>
 
       {/* GARANTIA 7 DIAS */}
-      <section className="py-16 px-5" style={{ background: "linear-gradient(160deg, oklch(0.96 0.04 85) 0%, oklch(0.92 0.08 75) 100%)" }}>
-        <div className="max-w-3xl mx-auto text-center">
-          <div className="inline-block rounded-full bg-foreground/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-foreground mb-6">
-            Garantia Incondicional
+      <section className="py-20 px-5 relative overflow-hidden bg-secondary/40">
+        <div className="absolute inset-0 pointer-events-none opacity-60"
+          style={{ background: "radial-gradient(circle at 50% 0%, oklch(0.88 0.12 80 / 0.45), transparent 60%)" }} />
+        <div className="relative max-w-3xl mx-auto">
+          <div className="relative rounded-3xl bg-card border border-primary/15 shadow-[var(--shadow-soft)] p-8 md:p-12 text-center overflow-hidden">
+            <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full opacity-25 blur-3xl"
+              style={{ background: "radial-gradient(circle, oklch(0.85 0.18 75), transparent 70%)" }} />
+            <div className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full opacity-25 blur-3xl"
+              style={{ background: "radial-gradient(circle, oklch(0.80 0.18 300), transparent 70%)" }} />
+
+            <div className="relative">
+              <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary mb-8">
+                <ShieldCheck className="h-3.5 w-3.5" /> Garantia Incondicional
+              </div>
+
+              <div className="flex justify-center mb-8">
+                <div className="seal-float relative">
+                  <div className="absolute inset-0 rounded-full blur-2xl opacity-60"
+                    style={{ background: "radial-gradient(circle, oklch(0.85 0.18 75 / 0.7), transparent 70%)" }} />
+                  <div className="seal-shine relative rounded-full overflow-hidden ring-4 ring-[color:oklch(0.88_0.12_80)]/40">
+                    <img
+                      src={garantia7Dias}
+                      alt="Selo de garantia de 7 dias"
+                      className="relative w-44 md:w-52 h-auto block"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <h2 className="text-2xl md:text-4xl font-extrabold text-foreground leading-tight mb-4">
+                Você está <span className="text-primary">100% protegido</span> por 7 dias
+              </h2>
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto">
+                Se nos primeiros <strong className="text-foreground">7 dias</strong> você não sentir os benefícios,
+                basta nos chamar pelo <strong className="text-foreground">WhatsApp</strong> e devolvemos{" "}
+                <strong className="text-foreground">100% do seu dinheiro</strong>.
+                Sem perguntas, sem burocracia — o risco é todo nosso.
+              </p>
+
+              <div className="mt-8 flex flex-wrap justify-center gap-3 text-xs font-semibold text-muted-foreground">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1.5">
+                  <Check className="h-3.5 w-3.5 text-primary" /> Reembolso integral
+                </span>
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1.5">
+                  <Check className="h-3.5 w-3.5 text-primary" /> Sem burocracia
+                </span>
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1.5">
+                  <Check className="h-3.5 w-3.5 text-primary" /> Suporte no WhatsApp
+                </span>
+              </div>
+            </div>
           </div>
-          <div className="flex justify-center mb-6">
-            <img
-              src={garantia7Dias}
-              alt="Selo de garantia de 7 dias"
-              className="w-40 md:w-48 h-auto drop-shadow-xl"
-            />
-          </div>
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground leading-tight mb-4">
-            Garantia incondicional de 7 dias
-          </h2>
-          <p className="text-base md:text-lg text-foreground/80 leading-relaxed">
-            Se nos primeiros <strong>7 dias</strong> você não estiver satisfeito(a), basta nos chamar
-            pelo <strong>WhatsApp</strong> e devolvemos <strong>100% do seu dinheiro</strong>.
-            Sem perguntas, sem burocracia. O risco é todo nosso.
-          </p>
         </div>
       </section>
 
