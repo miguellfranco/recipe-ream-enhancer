@@ -160,3 +160,33 @@
 .upsell-flash {
   animation: upsellFlash 2.1s ease-out;
 }
+
+@keyframes sealShine {
+  0% { transform: translateX(-120%) skewX(-20deg); opacity: 0; }
+  20% { opacity: 0.9; }
+  60% { opacity: 0.9; }
+  100% { transform: translateX(220%) skewX(-20deg); opacity: 0; }
+}
+
+.seal-shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.85) 50%, transparent 100%);
+  filter: blur(6px);
+  animation: sealShine 3.2s ease-in-out infinite;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+@keyframes sealFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.seal-float {
+  animation: sealFloat 4s ease-in-out infinite;
+}

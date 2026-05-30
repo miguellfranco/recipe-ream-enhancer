@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Check, Star, Sparkles, BookOpen, Heart, Infinity as InfinityIcon, MessageCircle, Printer, Trophy, ChevronLeft, ChevronRight } from "lucide-react";
+import { Check, Star, Sparkles, BookOpen, Heart, Infinity as InfinityIcon, MessageCircle, Printer, Trophy, ChevronLeft, ChevronRight, Globe, GraduationCap, Leaf, Gift, ShieldCheck } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import produtoMockup from "@/assets/produto-mockup.png";
@@ -274,31 +274,24 @@ function Index() {
         </div>
       </section>
 
-      {/* SOCIAL PROOF */}
-      <section className="py-14 px-5">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 rounded-full bg-accent/15 px-4 py-2 text-sm font-bold text-foreground mb-4">
-            <Trophy className="h-4 w-4 text-accent" />
-            Nº 1 em vendas no nicho de terapias holísticas
-          </div>
-          <p className="text-lg md:text-xl text-muted-foreground">
-            <strong className="text-foreground">+34.150 alunos</strong> e <strong className="text-foreground">12.823 avaliações positivas</strong>
-          </p>
-          <div className="flex justify-center gap-1 mt-3 text-accent">
-            {[...Array(5)].map((_, i) => <Star key={i} className="h-6 w-6 fill-current" />)}
-          </div>
-          <h2 className="text-2xl md:text-3xl font-bold mt-8 leading-snug">
-            8.202 mães, pais, avós e estudantes brasileiros relataram <span className="text-primary">alívio físico e emocional</span> seguindo as práticas do Guia.
-          </h2>
-        </div>
-      </section>
-
-      {/* WHATSAPP TESTIMONIALS */}
+      {/* SOCIAL PROOF + WHATSAPP TESTIMONIALS */}
       <section className="py-16 px-5 bg-secondary/40">
         <div className="max-w-5xl mx-auto">
-          <SectionTitle kicker="Depoimentos reais">
-            Veja o que nossos alunos estão dizendo no WhatsApp
-          </SectionTitle>
+          <div className="text-center max-w-3xl mx-auto mb-10">
+            <div className="inline-flex items-center gap-2 rounded-full bg-accent/15 px-4 py-2 text-sm font-bold text-foreground mb-5">
+              <Trophy className="h-4 w-4 text-accent" />
+              Nº 1 em vendas no nicho de terapias holísticas
+            </div>
+            <p className="text-lg md:text-xl text-muted-foreground">
+              <strong className="text-foreground">+34.150 alunos</strong> e <strong className="text-foreground">12.823 avaliações positivas</strong>
+            </p>
+            <div className="flex justify-center gap-1 mt-3 text-accent">
+              {[...Array(5)].map((_, i) => <Star key={i} className="h-6 w-6 fill-current" />)}
+            </div>
+            <h2 className="text-2xl md:text-3xl font-bold mt-6 leading-snug text-foreground">
+              8.202 mães, pais, avós e estudantes brasileiros relataram <span className="text-primary">alívio físico e emocional</span> seguindo as práticas do Guia — veja as mensagens reais que recebemos no WhatsApp:
+            </h2>
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
             {[whatsapp1, whatsapp2, whatsapp3].map((src, i) => (
               <div
@@ -314,9 +307,6 @@ function Index() {
               </div>
             ))}
           </div>
-          <p className="mt-6 text-center text-sm text-muted-foreground">
-            Mensagens reais enviadas por alunas após aplicarem as práticas do Guia.
-          </p>
         </div>
       </section>
 
@@ -356,15 +346,15 @@ function Index() {
 
           <div className="grid md:grid-cols-3 gap-5">
             {[
-              { tag: "OMS", icon: "🌍", text: "Evidências científicas sobre a conexão mente-corpo reconhecidas pela Organização Mundial da Saúde." },
-              { tag: "Harvard", icon: "🎓", text: "Estudos mostram que técnicas integrativas reduzem marcadores de inflamação e melhoram a saúde emocional." },
-              { tag: "Journal of Ethnopharmacology", icon: "🌿", text: "Ervas como valeriana e lavanda têm efeitos comprovados contra insônia, ansiedade e dores crônicas." },
+              { tag: "OMS", Icon: Globe, text: "Evidências científicas sobre a conexão mente-corpo reconhecidas pela Organização Mundial da Saúde." },
+              { tag: "Harvard", Icon: GraduationCap, text: "Estudos mostram que técnicas integrativas reduzem marcadores de inflamação e melhoram a saúde emocional." },
+              { tag: "Journal of Ethnopharmacology", Icon: Leaf, text: "Ervas como valeriana e lavanda têm efeitos comprovados contra insônia, ansiedade e dores crônicas." },
             ].map((c) => (
               <div key={c.tag} className="group relative rounded-2xl p-[1.5px] shadow-lg transition-all hover:-translate-y-1 hover:shadow-2xl" style={{ background: "linear-gradient(140deg, oklch(0.75 0.18 300 / 0.7), oklch(0.85 0.12 320 / 0.3), oklch(0.75 0.18 280 / 0.7))" }}>
                 <div className="h-full rounded-2xl bg-white p-6 flex flex-col">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl text-lg shadow-md" style={{ background: "linear-gradient(135deg, oklch(0.95 0.04 300), oklch(0.90 0.08 320))" }}>
-                      {c.icon}
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl shadow-md text-primary" style={{ background: "linear-gradient(135deg, oklch(0.95 0.04 300), oklch(0.90 0.08 320))" }}>
+                      <c.Icon className="h-5 w-5" />
                     </div>
                     <div className="text-xs font-black uppercase tracking-widest bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, #7e22ce, #c026d3)" }}>{c.tag}</div>
                   </div>
@@ -426,12 +416,14 @@ function Index() {
           </SectionTitle>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { tag: "🎁 Presente 1", img: BONUS_1, title: "Planner de Autocuidado", text: "Calendário semanal para implementar suas práticas e acompanhar seu progresso." },
-              { tag: "🎁 Presente 2", img: BONUS_2, title: "Calendário Lunar de Rituais", text: "Calendário digital com todas as fases lunares e melhores dias para cada ritual." },
-              { tag: "🎁 Super Bônus", img: BONUS_3, title: "Leitura Numerológica Cabalística", text: "Análise personalizada baseada no seu nome completo e data de nascimento — entregue em até 24h." },
+              { tag: "Presente 1", img: BONUS_1, title: "Planner de Autocuidado", text: "Calendário semanal para implementar suas práticas e acompanhar seu progresso." },
+              { tag: "Presente 2", img: BONUS_2, title: "Calendário Lunar de Rituais", text: "Calendário digital com todas as fases lunares e melhores dias para cada ritual." },
+              { tag: "Super Bônus", img: BONUS_3, title: "Leitura Numerológica Cabalística", text: "Análise personalizada baseada no seu nome completo e data de nascimento — entregue em até 24h." },
             ].map((b) => (
               <div key={b.title} className="rounded-2xl border border-primary/20 bg-card p-6 text-center shadow-sm hover:shadow-[var(--shadow-soft)] transition-shadow">
-                <div className="inline-block rounded-full px-4 py-1.5 text-xs font-extrabold mb-4 bg-primary text-primary-foreground shadow-[var(--shadow-glow)]">{b.tag}</div>
+                <div className="inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-extrabold mb-4 bg-primary text-primary-foreground shadow-[var(--shadow-glow)]">
+                  <Gift className="h-3.5 w-3.5" /> {b.tag}
+                </div>
                 <img src={b.img} alt={b.title} className="h-44 mx-auto object-contain mb-4" />
                 <h3 className="font-bold text-lg mb-2 text-foreground">{b.title}</h3>
                 <p className="text-sm text-muted-foreground">{b.text}</p>
@@ -503,14 +495,14 @@ function Index() {
                 <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">Tudo que você vai receber:</p>
                 <ul className="text-left space-y-2.5 text-sm md:text-base">
                   {[
-                    "📘 Guia completo com +150 receitas holísticas",
-                    "🎁 Bônus 1 — Planner de Autocuidado Semanal",
-                    "🎁 Bônus 2 — Calendário Lunar de Rituais",
-                    "⭐ Super Bônus — Leitura Numerológica Cabalística personalizada",
-                    "🖨️ Versão pronta para impressão sem custo extra",
-                    "♾️ Acesso vitalício + atualizações gratuitas",
-                    "💬 Suporte individual no WhatsApp",
-                    "📲 Entrega 100% digital imediata",
+                    "Guia completo com +150 receitas holísticas",
+                    "Bônus 1 — Planner de Autocuidado Semanal",
+                    "Bônus 2 — Calendário Lunar de Rituais",
+                    "Super Bônus — Leitura Numerológica Cabalística personalizada",
+                    "Versão pronta para impressão sem custo extra",
+                    "Acesso vitalício + atualizações gratuitas",
+                    "Suporte individual no WhatsApp",
+                    "Entrega 100% digital imediata",
                   ].map((t) => (
                     <li key={t} className="flex gap-2 items-start"><Check className="h-5 w-5 text-[color:var(--cta)] shrink-0 mt-0.5" /><span>{t}</span></li>
                   ))}
@@ -552,26 +544,58 @@ function Index() {
       </section>
 
       {/* GARANTIA 7 DIAS */}
-      <section className="py-16 px-5" style={{ background: "linear-gradient(160deg, oklch(0.96 0.04 85) 0%, oklch(0.92 0.08 75) 100%)" }}>
-        <div className="max-w-3xl mx-auto text-center">
-          <div className="inline-block rounded-full bg-foreground/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-foreground mb-6">
-            Garantia Incondicional
+      <section className="py-20 px-5 relative overflow-hidden bg-secondary/40">
+        <div className="absolute inset-0 pointer-events-none opacity-60"
+          style={{ background: "radial-gradient(circle at 50% 0%, oklch(0.88 0.12 80 / 0.45), transparent 60%)" }} />
+        <div className="relative max-w-3xl mx-auto">
+          <div className="relative rounded-3xl bg-card border border-primary/15 shadow-[var(--shadow-soft)] p-8 md:p-12 text-center overflow-hidden">
+            <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full opacity-25 blur-3xl"
+              style={{ background: "radial-gradient(circle, oklch(0.85 0.18 75), transparent 70%)" }} />
+            <div className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full opacity-25 blur-3xl"
+              style={{ background: "radial-gradient(circle, oklch(0.80 0.18 300), transparent 70%)" }} />
+
+            <div className="relative">
+              <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary mb-8">
+                <ShieldCheck className="h-3.5 w-3.5" /> Garantia Incondicional
+              </div>
+
+              <div className="flex justify-center mb-8">
+                <div className="seal-float relative">
+                  <div className="absolute inset-0 rounded-full blur-2xl opacity-60"
+                    style={{ background: "radial-gradient(circle, oklch(0.85 0.18 75 / 0.7), transparent 70%)" }} />
+                  <div className="seal-shine relative rounded-full overflow-hidden ring-4 ring-[color:oklch(0.88_0.12_80)]/40">
+                    <img
+                      src={garantia7Dias}
+                      alt="Selo de garantia de 7 dias"
+                      className="relative w-44 md:w-52 h-auto block"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <h2 className="text-2xl md:text-4xl font-extrabold text-foreground leading-tight mb-4">
+                Você está <span className="text-primary">100% protegido</span> por 7 dias
+              </h2>
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto">
+                Se nos primeiros <strong className="text-foreground">7 dias</strong> você não sentir os benefícios,
+                basta nos chamar pelo <strong className="text-foreground">WhatsApp</strong> e devolvemos{" "}
+                <strong className="text-foreground">100% do seu dinheiro</strong>.
+                Sem perguntas, sem burocracia — o risco é todo nosso.
+              </p>
+
+              <div className="mt-8 flex flex-wrap justify-center gap-3 text-xs font-semibold text-muted-foreground">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1.5">
+                  <Check className="h-3.5 w-3.5 text-primary" /> Reembolso integral
+                </span>
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1.5">
+                  <Check className="h-3.5 w-3.5 text-primary" /> Sem burocracia
+                </span>
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1.5">
+                  <Check className="h-3.5 w-3.5 text-primary" /> Suporte no WhatsApp
+                </span>
+              </div>
+            </div>
           </div>
-          <div className="flex justify-center mb-6">
-            <img
-              src={garantia7Dias}
-              alt="Selo de garantia de 7 dias"
-              className="w-40 md:w-48 h-auto drop-shadow-xl"
-            />
-          </div>
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground leading-tight mb-4">
-            Garantia incondicional de 7 dias
-          </h2>
-          <p className="text-base md:text-lg text-foreground/80 leading-relaxed">
-            Se nos primeiros <strong>7 dias</strong> você não estiver satisfeito(a), basta nos chamar
-            pelo <strong>WhatsApp</strong> e devolvemos <strong>100% do seu dinheiro</strong>.
-            Sem perguntas, sem burocracia. O risco é todo nosso.
-          </p>
         </div>
       </section>
 
@@ -584,7 +608,9 @@ function Index() {
         <DialogContent className="max-w-md p-0 overflow-hidden rounded-3xl bg-white border-0 max-h-[92vh] overflow-y-auto">
           {upsellStage === "first" ? (
           <div className="px-6 pt-8 pb-7 text-center">
-            <div className="text-5xl mb-4">🎁</div>
+            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary">
+              <Gift className="h-7 w-7" />
+            </div>
             <h3 className="text-2xl md:text-3xl font-extrabold text-[#0f172a] leading-tight">
               Espere! Oferta<br />Exclusiva!
             </h3>
