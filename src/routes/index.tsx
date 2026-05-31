@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Check, Star, Sparkles, BookOpen, Heart, Infinity as InfinityIcon, MessageCircle, Printer, Trophy, ChevronLeft, ChevronRight, Globe, GraduationCap, Leaf, Gift, ShieldCheck } from "lucide-react";
+import { Check, Star, BookOpen, Heart, Infinity as InfinityIcon, MessageCircle, Printer, Trophy, ChevronLeft, ChevronRight, Globe, GraduationCap, Leaf, Gift, ShieldCheck } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import produtoMockup from "@/assets/produto-mockup.png";
@@ -54,7 +54,6 @@ function CTA({ children = "QUERO TER CURA FÍSICA E EMOCIONAL", className = "", 
       className={`inline-flex items-center justify-center gap-2 rounded-full px-8 py-5 text-base md:text-lg font-bold tracking-wide text-[color:var(--cta-foreground)] shadow-[var(--shadow-soft)] transition-transform hover:scale-[1.02] active:scale-[0.99] ${className}`}
       style={{ background: "var(--gradient-cta)" }}
     >
-      <Sparkles className="h-5 w-5" />
       {children}
     </a>
   );
@@ -102,7 +101,7 @@ const benefits = [
   { icon: Heart, title: "Sem conhecimento prévio", text: "Material simplificado e didático. É só ler e aplicar na prática." },
   { icon: Printer, title: "Liberado para imprimir", text: "Acesso digital + versão pronta para impressão em qualquer gráfica, sem custo adicional." },
   { icon: InfinityIcon, title: "Acesso vitalício", text: "Consulte sempre que quiser e compartilhe com quem você ama." },
-  { icon: Sparkles, title: "Ideal para terapeutas", text: "Compêndio respaldado pela medicina integrativa para uso profissional." },
+  { icon: GraduationCap, title: "Ideal para terapeutas", text: "Compêndio respaldado pela medicina integrativa para uso profissional." },
 ];
 
 const faqs = [
@@ -215,10 +214,7 @@ function PreviewCarousel() {
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {PREVIEW_TOPICS.map((t) => (
           <div key={t.title} className="rounded-2xl bg-card border border-border p-5">
-            <div className="flex items-start gap-2 mb-2">
-              <Sparkles className="h-4 w-4 text-primary mt-1 shrink-0" />
-              <h3 className="font-bold text-foreground leading-snug">{t.title}</h3>
-            </div>
+            <h3 className="font-bold text-foreground leading-snug mb-2">{t.title}</h3>
             <ul className="space-y-1 pl-6">
               {t.bullets.map((b, i) => (
                 <li key={i} className="list-disc text-sm text-muted-foreground leading-relaxed marker:text-primary/60">{b}</li>
@@ -245,8 +241,8 @@ function Index() {
         <div className="absolute inset-0 pointer-events-none opacity-40"
           style={{ background: "radial-gradient(circle at 20% 20%, oklch(0.8 0.15 300 / 0.4), transparent 50%), radial-gradient(circle at 80% 60%, oklch(0.85 0.12 330 / 0.4), transparent 55%)" }} />
         <div className="relative max-w-5xl mx-auto px-5 pt-14 pb-16 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/70 backdrop-blur px-4 py-1.5 text-xs font-semibold text-primary border border-primary/20 mb-6">
-            <Sparkles className="h-3.5 w-3.5" /> GUIA DE AUTOCURA ENERGÉTICA
+          <div className="inline-block rounded-full bg-white/70 backdrop-blur px-4 py-1.5 text-xs font-semibold text-primary border border-primary/20 mb-6">
+            GUIA DE AUTOCURA ENERGÉTICA
           </div>
           <h1 className="text-3xl md:text-5xl font-extrabold leading-tight text-foreground">
             Tenha em mãos seu <span className="underline decoration-primary decoration-4 underline-offset-4">Guia Prático de Autocura Energética</span>{" "}
@@ -334,8 +330,8 @@ function Index() {
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px" style={{ background: "linear-gradient(90deg, transparent, oklch(0.55 0.20 300 / 0.4), transparent)" }} />
         <div className="relative max-w-5xl mx-auto">
           <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[10px] font-extrabold uppercase tracking-[0.25em] text-white shadow-lg mb-5" style={{ background: "linear-gradient(90deg, #7e22ce, #c026d3)" }}>
-              <Sparkles className="h-3 w-3" /> Base científica comprovada
+            <div className="inline-block rounded-full px-4 py-1.5 text-[10px] font-extrabold uppercase tracking-[0.25em] text-white shadow-lg mb-5" style={{ background: "linear-gradient(90deg, #7e22ce, #c026d3)" }}>
+              Base científica comprovada
             </div>
             <h2 className="text-3xl md:text-5xl font-black leading-tight tracking-tight text-foreground">
               100% fundamentado em princípios <br className="hidden md:block" />
@@ -666,8 +662,8 @@ function Index() {
           <div className="relative px-6 pt-8 pb-8 text-center overflow-hidden" style={{ background: "linear-gradient(160deg, oklch(0.32 0.14 300) 0%, oklch(0.42 0.18 295) 55%, oklch(0.55 0.20 320) 100%)" }}>
             <div className="pointer-events-none absolute inset-0 opacity-40" style={{ background: "radial-gradient(circle at 20% 10%, oklch(0.8 0.18 320 / 0.5), transparent 50%), radial-gradient(circle at 80% 90%, oklch(0.75 0.18 280 / 0.55), transparent 55%)" }} />
             <div className="relative">
-              <div className="inline-flex items-center gap-2 rounded-full bg-white/15 backdrop-blur px-3 py-1 text-[10px] font-extrabold uppercase tracking-[0.2em] text-white border border-white/25 mb-4">
-                <Sparkles className="h-3 w-3" /> Última chance — só agora
+              <div className="inline-block rounded-full bg-white/15 backdrop-blur px-3 py-1 text-[10px] font-extrabold uppercase tracking-[0.2em] text-white border border-white/25 mb-4">
+                Última chance — só agora
               </div>
               <h3 className="text-2xl md:text-3xl font-extrabold text-white leading-tight">
                 ESPERE!<br />
